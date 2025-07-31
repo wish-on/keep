@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Gasdaniel</title>
+  <meta name="description" content="GASDANIEL COMPANY, we're more than just a supplier; we're a comprehensive engineering solutions provider. We empower businesses across diverse sectors by offering a unique blend of chemical and equipment supply, cutting-edge software development, and expert engineering consultation and design services. Our integrated approach allows us to address complex challenges with innovative and efficient solutions, driving progress and maximizing value for our clients.">
+  <meta name="keywords" content="gasdaniel, Gasdaniel Company, Chemical and Equipment Supply, Software Development, Engineering Consultation and Design, ecommerce, store, laboratory equipment, chemicals, fertilizers, pesticides, herbicides, mining chemicals, medical supplies, cleaning products, industrial chemicals, social media strategies, infrastructure, energy, water, environment, engineers, architects, designers">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fontawesome-free@6.2.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9.0.0/swiper-bundle.min.css" rel="stylesheet">
+  <link href="css/templatemo-pod-talk.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #0052cc;
+      --secondary-color: #ff6f61;
+      --accent-color: #00c4b4;
+      --text-color: #333333;
+      --background-color: #f8fafc; /* White-slate background */
+      --card-background: #ffffff; /* Slightly lighter for cards */
+      --transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    body {
+      background: var(--background-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .header, .why-box, .icon-box, .product, .team-member, .contact-form, .news-item, .announcement-item, .job-item {
+      background: var(--card-background);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .video-news-section, .testimonials {
+      background: var(--background-color);
+    }
+
+    .footer {
+      background: linear-gradient(135deg, var(--primary-color), #004080);
+    }
+
+    .header {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .topbar {
+      background: var(--primary-color);
+      color: white;
+      padding: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    .social-links a {
+      transition: var(--transition);
+      margin: 0 12px;
+      font-size: 1.3rem;
+      color: white;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-4px) scale(1.1);
+      color: var(--accent-color);
+    }
+
+    .navmenu a {
+      position: relative;
+      padding: 10px 15px;
+      transition: var(--transition);
+      color: var(--text-color);
+    }
+
+    .navmenu a:hover::after {
+      content: '';
+      position: absolute;
+      width: 80%;
+      height: 3px;
+      background: var(--accent-color);
+      bottom: -8px;
+      left: 10%;
+      border-radius: 2px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      border-radius: 0 0 20px 20px;
+    }
+
+    .hero img {
+      transition: transform 0.7s ease, opacity 0.5s ease;
+      opacity: 0.9;
+    }
+
+    .hero:hover img {
+      transform: scale(1.08) rotate(1deg);
+      opacity: 1;
+    }
+
+    .welcome {
+      animation: slideInFromTop 1.2s ease-out;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    @keyframes slideInFromTop {
+      0% { transform: translateY(-150px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .why-box, .icon-box {
+      transition: var(--transition);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .why-box:hover, .icon-box:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .product {
+      opacity: 0;
+      transform: translateY(60px) scale(0.95);
+      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .product.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .product:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+      transition: var(--transition);
+    }
+
+    .product:hover img {
+      transform: scale(1.1);
+    }
+
+    .custom-order-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: var(--transition);
+    }
+
+    .custom-order-btn:hover {
+      background: var(--secondary-color);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-news-section {
+      padding: 80px 0;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+
+    .video-slide, .photo-slide {
+      padding: 15px;
+    }
+
+    .video-slide iframe, .photo-slide img {
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      width: 100%;
+      height: 250px;
+    }
+
+    .video-slide iframe:hover, .photo-slide img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .news-item, .announcement-item, .job-item {
+      background: var(--card-background);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .news-item.show, .announcement-item.show, .job-item.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .news-item:hover, .announcement-item:hover, .job-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-item h4, .announcement-item h4, .job-item h4 {
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .news-item h4::after, .announcement-item h4::after, .job-item h4::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: var(--accent-color);
+      bottom: 0;
+      left: 0;
+      transition: width 0.4s ease;
+    }
+
+    .news-item:hover h4::after, .announcement-item:hover h4::after, .job-item:hover h4::after {
+      width: 50%;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 196, 180, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 196, 180, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 196, 180, 0); }
+    }
+
+    .news-item, .announcement-item, .job-item {
+      animation: pulse 2s infinite;
+    }
+
+    .team-member {
+      transition: var(--transition);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-member:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .share-btn {
+      background: var(--accent-color);
+      color: white;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 12px;
+      transition: var(--transition);
+    }
+
+    .share-btn:hover {
+      background: var(--secondary-color);
+      transform: scale(1.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-form {
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      transition: var(--transition);
+    }
+
+    .form-group input, .form-group textarea {
+      border-radius: 10px;
+      transition: var(--transition);
+      border: 1px solid #ddd;
+      background: var(--card-background);
+      color: var(--text-color);
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 8px rgba(0, 82, 204, 0.3);
+    }
+
+    .contact-form button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      transition: var(--transition);
+    }
+
+    .contact-form button:hover {
+      background: var(--secondary-color);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--secondary-color);
+      opacity: 0.7;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--primary-color);
+      opacity: 1;
+    }
+
+    .footer a {
+      color: var(--accent-color);
+      transition: var(--transition);
+    }
+
+    .footer a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .footer .copyright, .footer .credits {
+      color: var(--text-color);
+    }
+    .swiper-container {
+            width: 100%;
+            max-width: 800px; /* Max width for the carousel */
+            height: auto; /* Height will adjust based on content */
+            border-radius: 1rem; /* Rounded corners */
+            overflow: hidden; /* Hide overflow for rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            background-color: #ffffff;
+            position: relative; /* For navigation buttons positioning */
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f4f8; /* Light background for slides */
+            border-radius: 1rem; /* Match container border-radius */
+            overflow: hidden;
+            height: 400px; /* Fixed height for image container */
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the slide area */
+            border-radius: 1rem; /* Match container border-radius */
+        }
+        /* Custom styles for navigation buttons */
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: #ffffff; /* White color for arrows */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            border-radius: 50%; /* Make them circular */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
+        }
+        /* Style for pagination dots */
+        .swiper-pagination-bullet {
+            background-color: #cbd5e1; /* Light gray */
+            opacity: 1;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #3b82f6; /* Blue for active dot */
+        }
+  </style>
+</head>
+
+<body class="index-page">
+  <header id="header" class="header sticky-top">
+    <div class="topbar d-flex align-items-center">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:gasdaniel17@gmail.com">gasdaniel17@gmail.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+255762290002</span></i>
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+          <a href="https://x.com/gasdaniel17?s=09" class="twitter" title="Follow us on X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://www.facebook.com/share/1EtNhUWLmP/" class="facebook" title="Follow us on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/gasdaniel17?igsh=YWJ5ajFjMXUyeGI2" class="instagram" title="Follow us on Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/gasdaniel" class="linkedin" title="Follow us on LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://youtube.com/@gasdaniel" class="youtube" title="Subscribe to our YouTube channel"><i class="bi bi-youtube"></i></a>
+          <a href="https://wa.me/message/LX4I5KCWSXK6N1" class="whatsapp" title="Chat with us on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="branding d-flex align-items-center">
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center me-auto" title="Go to homepage">
+          <img src="assets/img/logo.png" alt="gasdaniel">
+          <h1 class="sitename">GASDANIEL</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index.html" class="active">Home<br></a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#departments">Departments</a></li>
+            <li><a href="#doctors">Experts</a></li>
+            <li class="dropdown"><a href=""><span>Services/Products</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li class="dropdown"><a href=""><span>Chemicals & Equipments</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                  <ul>
+                    <li><a href="products.html">School Laboratory</a></li>
+                    <li><a href="products.html">Agriculture</a></li>
+                    <li><a href="products.html">Mining chemicals and Equipments</a></li>
+                    <li><a href="products.html">Hospital chemical and equipments</a></li>
+                    <li><a href="products.html">Industrial Chemical and Equipments</a></li>
+                  </ul>
+                </li>
+                <li><a href="index.html">Engineering Consultation</a></li>
+                <li><a href="index.html">Web Designing & Development</a></li>
+                <li><a href="index.html">Architectural Services</a></li>
+              </ul>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+        <a class="cta-btn d-none d-sm-block" href="https://wa.me/message/LX4I5KCWSXK6N1">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section light-background">
+      <img src="assets/img/hero-1.jpg" alt="" data-aos="zoom-in" data-aos-duration="800">
+      <div class="container position-relative">
+        <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100" data-aos-duration="1200">
+          <h2 class="welcome-title"><b>WELCOME, GASDANIEL COMPANY</b></h2>
+          <p class="welcome-description"><i><b>We are a team of talented Metallurgical, Environmental, Chemical, and Software Engineers</b></i></p><br><br>
+        </div>
+        <div class="form" autocomplete="off" action="/">
+          <div class="autocomplete">
+            <input id="myInput" type="text" class="form-control form-input search-input-border" placeholder="Search anything..." data-aos="fade-up" data-aos-delay="200">
+          </div>
+          <a type="Search" class="btn btn-outline-info custom-search-btn" href="products.html#searchBar" data-aos="fade-up" data-aos-delay="300">Search</a>
+        </div>
+        <div class="content row gy-4">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="why-box" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+              <h3>Why Choose Gasdaniel?</h3>
+              <p>
+                Gasdaniel Company uniquely integrates science, technology, and design, delivering comprehensive solutions to complex challenges. We prioritize safety, quality, and customer satisfaction. We offer competitive pricing and bundled packages for cost-effective solutions.<br> We are your trusted partner.
+              </p>
+              <div class="text-center">
+                <a href="about.html#whyUs" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="d-flex flex-column justify-content-center">
+              <div class="row gy-4">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box" data-aos="zoom-out" data-aos-delay="300" data-aos-duration="800">
+                    <i class="bi bi-clipboard-data"></i>
+                    <h4>OUR MISSION</h4>
+                    <p>To be the preferred partner for businesses and individuals seeking integrated solutions in science, technology, and design, providing high-quality products, innovative services, and exceptional customer experiences.</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box" data-aos="zoom-out" data-aos-delay="400" data-aos-duration="800">
+                    <i class="bi bi-gem"></i>
+                    <h4>Vision</h4>
+                    <p>Becoming a leading provider of comprehensive and innovative solutions that empower our clients to achieve their goals and drive progress.</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box" data-aos="zoom-out" data-aos-delay="500" data-aos-duration="800">
+                    <i class="bi bi-inboxes"></i>
+                    <h4>Core Values</h4>
+                    <p>Innovation<br> Quality<br> Customer Focus<br> Integrity<br> Collaboration</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section light-background">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="300">
+            <i class="bi bi-person-gear"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="17" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Engineers</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="400">
+            <i class="bi bi-diagram-3"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Departments</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="500">
+            <i class="fas fa-flask"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Research Labs</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="600">
+            <i class="fas fa-user-group"></i>
+            <div class="stats-item">
+              <span data-purecounter-start="0" data-purecounter-end="56" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Team</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="services" class="services section">
+      <div class="container section-title" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Products</h2>
+      </div>
+      <section class="products-section">
+        <h2>Our Products</h2>
+        <div class="products-container ">
+          <div class="product" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/Nproduct/991es.jpg" alt="Scientific Calculator" class="box product-img">
+            <h3 class="product-title"><b>991 es</b></h3>
+            <p class="product-desc"><i>for Pure Mathematics</i></p>
+            <p class="price">Tsh 31,000/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+          <div class="product" data-aos="fade-up" data-aos-delay="150">
+            <img src="assets/img/Nproduct/991ms.jpg" alt="991ms" class="box product-img-100">
+            <h3 class="product-title-small"><b>991 ms</b></h3>
+            <p class="product-desc-small"><i>for Basic Applied Mathematics</i></p>
+            <p class="price">Tsh 25,000/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+          <div class="product" data-aos="fade-up" data-aos-delay="200">
+            <img src="assets/img/Nproduct/digital.jpg" alt="" class="box product-img-100">
+            <h3 class="product-title-medium"><b>Electronic Balance</b></h3>
+            <p class="product-desc-weight"><i>1000g</i></p>
+            <p class="price">Tsh 190,000/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+          <div class="product" data-aos="fade-up" data-aos-delay="250">
+            <img src="assets/img/Nproduct/coat.jpg" alt="" class="box img-height-100">
+            <h3 class="product-title-labcoat"><b>Laboratory Coat</b></h3>
+            <p class="product-size"><i>Medium, Large Size</i></p>
+            <p class="price">Tsh 35,000/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+          <div class="product" data-aos="fade-up" data-aos-delay="300">
+            <img src="assets/img/Nproduct/bk1.jpg" alt="" class="box img-height-100">
+            <h3 class="product-title-beaker"><b>Beaker Pyrex</b></h3><br>
+            <p class="product-volume"><i>250ml</i></p>
+            <p class="price">Tsh 12,000/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+       
+          <div class="product" data-aos="fade-up" data-aos-delay="400">
+            <img src="assets/img/Nproduct/test.jpg" alt="" class="box img-height-100">
+            <h3 class="product-title-boiling"><b>Boiling Tubes</b></h3>
+            <p class="product-desc-boiling"><i>Pyrex or Glass</i></p>
+            <p class="price">Tsh 4,000/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+          <div class="product" data-aos="fade-up" data-aos-delay="450">
+            <img src="assets/img/Nproduct/Beaker.gif" alt="" class="box img-height-100">
+            <h3 class="product-title-beaker-glass"><b>Beaker Glass</b></h3><br>
+            <p class="product-volume"><i>250ml</i></p>
+            <p class="price">Tsh 5,500/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+          <div class="product" data-aos="fade-up" data-aos-delay="500">
+            <img src="assets/img/Nproduct/burete.jpg" alt="" style="height: 100px;" class="box">
+            <h3 style="font-size: 16px;"><b>Burette</b></h3><br>
+            <p style="font-size: 12px;"><i>10, 20, 25ml</i></p>
+            <p class="price">Tsh 7,500/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+          <div class="product" data-aos="fade-up" data-aos-delay="550">
+            <img src="assets/img/Nproduct/retort.jpg" alt="" style="height: 80px;" class="box">
+            <img src="assets/img/Nproduct/headR.png" alt="" style="height: 10px;"><br>
+            <h3 style="font-size: 16px;"><b>Retort Stand</b></h3><br>
+            <p style="font-size: 12px;"><i>with all accessories</i></p>
+            <p class="price">Tsh 29,500/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div>
+          <div class="product" data-aos="fade-up" data-aos-delay="600">
+            <img src="assets/img/Nproduct/peroxide.jpg" alt="" style="height: 100px;" class="box">
+            <h3 style="font-size: 16px;"><b>Hydrogen Peroxide</b></h3>
+            <p style="font-size: 12px;"><i>500ml</i></p>
+            <p class="price">Tsh 49,500/=</p>
+            <a type="button" class="btn custom-order-btn" href="products.html">Order Now</a>
+          </div> 
+        </div>
+      </section>
+      <section class="view-all-products text-center" data-aos="fade-up" data-aos-delay="800">
+         <a type="button" class="btn custom-order-btn" href="products.html">View All Products</a>
+      </section>
+      <!-- Videos, Photos, News, Announcements, and Jobs Section -->
+      <section class="video-news-section">
+        <div class="container section-title" data-aos="fade-up" data-aos-duration="1000">
+          <h2>Media & Updates</h2>
+          <p>Stay updated with our latest photos, news, announcements, and career opportunities.</p>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <!-- Photos -->
+          <h2>Photos</h2>
+        <div class="swiper-container" data-aos="fade-up" data-aos-delay="10">
+          
+        <div class="swiper-wrapper">
+            <div class="swiper-slide photo-slide">
+                <img src="assets/img/gallery/co.jpg"  alt="Lab Equipment" onerror="this.onerror=null;this.src='https://placehold.co/800x400/AEC6CF/000000?text=Image+Not+Found';" />
+            </div>
+            <div class="swiper-slide photo-slide">
+                <img src="assets/img/gallery/co (2).jpg" alt="Engineering Project" onerror="this.onerror=null;this.src='https://placehold.co/800x400/FFD700/000000?text=Image+Not+Found';" />
+            </div>
+            <div class="swiper-slide photo-slide">
+                <img src="assets/img/gallery/co (1).jpg" alt="Team Collaboration" onerror="this.onerror=null;this.src='https://placehold.co/800x400/98FB98/000000?text=Image+Not+Found';" />
+            </div>
+            <!-- Added more placeholder images for better demonstration -->
+            <div class="swiper-slide photo-slide">
+                <img src="assets/img/Nproduct/b1.jpg" alt="Research Facility" onerror="this.onerror=null;this.src='https://placehold.co/800x400/ADD8E6/000000?text=Image+Not+Found';" />
+            </div>
+            <div class="swiper-slide photo-slide">
+                <img src="assets/img/Nproduct/b2.jpg" alt="Innovation Hub" onerror="this.onerror=null;this.src='https://placehold.co/800x400/FFB6C1/000000?text=Image+Not+Found';" />
+            </div>
+             <div class="swiper-slide photo-slide">
+                <img src="assets/img/gallery/co (7).jpg" alt="Innovation Hub" onerror="this.onerror=null;this.src='https://placehold.co/800x400/FFB6C1/000000?text=Image+Not+Found';" />
+            </div>
+             <div class="swiper-slide photo-slide">
+                <img src="assets/img/Nproduct/b3.jpg" alt="Innovation Hub" onerror="this.onerror=null;this.src='https://placehold.co/800x400/FFB6C1/000000?text=Image+Not+Found';" />
+            </div>
+               <div class="swiper-slide photo-slide">
+                <img src="assets/img/gallery/bb (2).jpg" alt="Innovation Hub" onerror="this.onerror=null;this.src='https://placehold.co/800x400/FFB6C1/000000?text=Image+Not+Found';" />
+            </div>
+               <div class="swiper-slide photo-slide">
+                <img src="assets/img/gallery/bb (3).jpg" alt="Innovation Hub" onerror="this.onerror=null;this.src='https://placehold.co/800x400/FFB6C1/000000?text=Image+Not+Found';" />
+            </div>
+               <div class="swiper-slide photo-slide">
+                <img src="assets/img/gallery/bb (4).jpg" alt="Innovation Hub" onerror="this.onerror=null;this.src='https://placehold.co/800x400/FFB6C1/000000?text=Image+Not+Found';" />
+            </div>
+               <div class="swiper-slide photo-slide">
+                <img src="assets/img/gallery/bb (5).jpg" alt="Innovation Hub" onerror="this.onerror=null;this.src='https://placehold.co/800x400/FFB6C1/000000?text=Image+Not+Found';" />
+            </div>
+        </div>
+        </div>
+
+          <!-- News -->
+          <h3>Latest News</h3>
+          <div class="row mb-5">
+            <div class="col-md-6">
+              <div class="news-item" data-aos="fade-up" data-aos-delay="100">
+                <h4>New Laboratory Equipment Line Launched</h4>
+                <p>July 20, 2025 - GASDANIEL COMPANY introduces a new range of advanced laboratory equipment designed for precision and efficiency in educational and industrial settings.</p>
+                <a href="#" class="custom-order-btn">Read More</a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="news-item" data-aos="fade-up" data-aos-delay="200">
+                <h4>Partnership with Local Secondary Schools and Universities</h4>
+                <p>July 15, 2025 - We are excited to announce a collaboration with top universities to enhance STEM education through our cutting-edge supplies and expertise.</p>
+                <a href="#" class="custom-order-btn">Read More</a>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="news-item" data-aos="fade-up" data-aos-delay="400">
+                <h4>Community Outreach Program</h4>
+                <p>July 5, 2025 - GASDANIEL COMPANY launches a community outreach program to support local schools with essential laboratory supplies and training.</p>
+                <a href="#" class="custom-order-btn">Read More</a>
+              </div>
+             </div>
+            <div class="col-md-6">
+              <div class="news-item" data-aos="fade-up" data-aos-delay="500">
+                <h4>New Product Launch: Eco-Friendly Chemicals</h4>
+                <p>June 30, 2025 - We are proud to introduce our new line of eco-friendly chemicals designed to minimize environmental impact while maintaining high performance.</p>
+                <a href="#" class="custom-order-btn">Read More</a>
+              </div>
+             </div>
+          </div>
+
+          <!-- Announcements -->
+          <h3>Announcements</h3>
+          <div class="row mb-5">
+            <div class="col-md-6">
+              <div class="announcement-item" data-aos="fade-up" data-aos-delay="100">
+                <h4>Upcoming Seminar on Engineering Solutions</h4>
+                <p>Join us on August 10, 2025, for a Seminar on innovative engineering solutions for sustainable development. Register now!</p>
+                <a href="#" class="custom-order-btn">Register</a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="announcement-item" data-aos="fade-up" data-aos-delay="200">
+                <h4>New Website Launch</h4>
+                <p>Our revamped website is live! Explore our updated product catalog and services with a seamless user experience.</p>
+                <a href="#" class="custom-order-btn">Visit Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job Offers 
+          <h3>Job Opportunities</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="job-item" data-aos="fade-up" data-aos-delay="100">
+                <h4>Architectural Engineer</h4>
+                <p>Join our team to develop innovative solutions. Requires a degree in architectural engineering and 1+ years of experience.</p>
+                <a href="mailto:info.gasdanielcompany@gmail.com" class="custom-order-btn">Apply Now</a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="job-item" data-aos="fade-up" data-aos-delay="200">
+                <h4>Software Developer</h4>
+                <p>We are seeking a skilled developer proficient in JavaScript and React to enhance our web platforms. Apply today!</p>
+                <a href="mailto:info.gasdanielcompany@gmail.com" class="custom-order-btn">Apply Now</a>
+              </div>
+            </div>
+          </div>-->
+        </div>
+      </section>
+    </section>
+
+    <!-- Departments Section -->
+    <section id="departments" class="departments section">
+      <div class="container section-title" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Departments</h2>
+        <p>Delivering innovative solutions across diverse industries with expertise and precision.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#departments-tab-1">Chemical and Equipment Department</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#departments-tab-2">Software Department</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#departments-tab-3">Engineering Consultation Department</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#departments-tab-4">Design Department</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-9 mt-4 mt-lg-0">
+            <div class="tab-content">
+              <div class="tab-pane active show" id="departments-tab-1">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Chemical and Equipment Department</h3>
+                    <p class="fst-italic" style="text-align: justify;">This department supports various industries by supplying essential chemicals, equipment, and supplies for school laboratories, agriculture, mining, hospitals, and industrial applications. Our range includes laboratory equipment, fertilizers, pesticides, herbicides, mining chemicals, medical supplies, cleaning products, and more, ensuring high-quality products, safety, and compliance... <a href="about.html#chemical"><button class="btn custom-order-btn" style="font-size: smaller;">Read More>></button></a></p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments/chemical.jpeg" alt="" class="img-fluid" style="border-radius: 20px; height: 210px; width: 210px;" data-aos="zoom-in" data-aos-delay="200">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="departments-tab-2">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Software Department</h3>
+                    <p class="fst-italic" style="text-align: justify;">Our software department excels in web design, development, and strategic social media marketing. We create stunning, functional websites and data-driven social media campaigns to maximize brand reach and customer engagement... <a href="about.html#software"><button class="btn custom-order-btn" style="font-size: smaller;">Read More>></button></a></p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments/software.jpeg" alt="" class="img-fluid" style="border-radius: 20px; height: 210px; width: 210px;" data-aos="zoom-in" data-aos-delay="200">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="departments-tab-3">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Engineering Consultation Department</h3>
+                    <p class="fst-italic" style="text-align: justify;">Our experienced engineers provide expert consulting services, including feasibility studies, design, construction supervision, and project management across infrastructure, energy, water, and environmental sectors... <a href="about.html#consultation"><button class="btn custom-order-btn" style="font-size: smaller;">Read More>></button></a></p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments/consultation.jpeg" alt="" class="img-fluid" style="border-radius: 20px; height: 210px; width: 210px;" data-aos="zoom-in" data-aos-delay="200">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="departments-tab-4">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Designing Department</h3>
+                    <p class="fst-italic" style="text-align: justify;">Our team of engineers, architects, and designers delivers innovative, sustainable, and aesthetically pleasing designs for buildings, infrastructure, and products... <a href="about.html#consultation"><button class="btn custom-order-btn" style="font-size: smaller;">Read More>></button></a></p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments/designing.jpeg" alt="" class="img-fluid" style="border-radius: 20px; height: 210px; width: 210px;" data-aos="zoom-in" data-aos-delay="200">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experts Section -->
+    <section id="doctors" class="doctors section">
+      <div class="container section-title" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Company Structure</h2>
+        <p>Our team is organized to achieve our mission and strategic goals with excellence.</p>
+      </div>
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/experts/g2.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200"></div>
+              <div class="member-info">
+                <h4>Gaspar Daniel</h4>
+                <span>Chief Executive Officer (CEO)</span>
+                <p><i>"Nothing is impossible if you start now"</i></p>
+                <div class="social">
+                  <a href="https://www.facebook.com/share/1EtNhUWLmP/"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/gasdaniel17"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/gasdaniel"><i class="bi bi-linkedin"></i></a>
+                  <a href="https://wa.me/message/LX4I5KCWSXK6N1"><i class="bi bi-whatsapp"></i></a>
+                  <a href="#" class="share-btn" onclick="shareProfile('Gaspar Daniel', 'Chief Executive Officer', 'https://www.gasdaniel.com')"><i class="bi bi-share"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/experts/christian.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200"></div>
+              <div class="member-info">
+                <h4>Christian Segeza</h4>
+                <span>Chief Operating Officer (COO)</span>
+                <p>"Define success not just by profits, but by the positive impact we have on our community and the world"</p>
+                <div class="social">
+                  
+                  <a href="https://www.facebook.com/share/1EtNhUWLmP/"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/gasdaniel17"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/gasdaniel"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="share-btn" onclick="shareProfile('Christian Segeza', 'Chief Operating Officer', 'https://www.gasdaniel.com')"><i class="bi bi-share"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/experts/Veronica.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200"></div>
+              <div class="member-info">
+                <h4>Veronica Godwin</h4>
+                <span>Chief Financial Officer (CFO)</span>
+                <p>"I believe in a foundation of collaboration, innovation, and unwavering commitment to excellence"</p>
+                <div class="social">
+                  
+                  <a href="https://www.facebook.com/share/1EtNhUWLmP/"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/gasdaniel17"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/gasdaniel"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="share-btn" onclick="shareProfile('Veronica Godwin', 'Chief Financial Officer', 'https://www.gasdaniel.com')"><i class="bi bi-share"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/experts/Adobe_Express_20250217_1316490_1.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200"></div>
+              <div class="member-info">
+                <h4>Deniss Andrew</h4>
+                <span>General Manager</span>
+                <p>"Dream big, work hard, and never give up"</p>
+                <div class="social">
+                  
+                  <a href="https://www.facebook.com/share/1EtNhUWLmP/"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/gasdaniel17"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/gasdaniel"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="share-btn" onclick="shareProfile('Dennis Andrew', 'General Manager', 'https://www.gasdaniel.com')"><i class="bi bi-share"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <div class="container section-title" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Contact</h2>
+        <p>Connect with us! We're here to help and eager to assist you.</p>
+      </div>
+      <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5210.264146153033!2d30.10570972065475!3d-4.56585057965684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19bf4d000f6fde55%3A0x1fca97d3047b323f!2sGASDANIEL%20COMPANY!5e1!3m2!1sen!2stz!4v1739441663040!5m2!1sen!2stz" width="100%" height="300" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-4">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3>Location</h3>
+                <p>47301 Kasulu, Kigoma</p>
+              </div>
+            </div>
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+255762290002</p>
+              </div>
+            </div>
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>gasdanielcompany@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <form id="contactForm" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <span class="error">Please enter your name.</span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <span class="error">Please enter a valid email address.</span>
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                <span class="error">Please enter a subject.</span>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                <span class="error">Please enter your message.</span>
+              </div>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer" style="background-color: #c0deff;">
+    <div class="container footer-top" style="background-color: #c0deff;">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename"><img src="assets/img/logo.png" alt="gasdaniel">GASDANIEL</span>
+          </a>
+          <div class="social-links d-flex mt-4">
+            
+            <a href="https://www.facebook.com/share/1EtNhUWLmP/"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/gasdaniel17"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/gasdaniel"><i class="bi bi-linkedin"></i></a>
+            <a href="https://wa.me/message/LX4I5KCWSXK6N1"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="products.html#searchBar">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design & Development</a></li>
+            <li><a href="products.html#searchBar">Chemicals & Equipments</a></li>
+            <li><a href="#">Engineering Consultation</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Chemicals and Equipments</h4>
+          <ul>
+            <li><a href="products.html#searchBar">Physics</a></li>
+            <li><a href="products.html#searchBar">Chemistry</a></li>
+            <li><a href="products.html#searchBar">Biology</a></li>
+            <li><a href="#">Agriculture</a></li>
+            <li><a href="#">Mining</a></li>
+            <li><a href="#">Construction</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Sector of Interest</h4>
+          <ul>
+            <li><a href="products.html#searchBar">Laboratories</a></li>
+            <li><a href="products.html#searchBar">Hospitals</a></li>
+            <li><a href="#">Industries</a></li>
+            <li><a href="#">Mining</a></li>
+            <li><a href="#">Agriculture</a></li>
+            <li><a href="#">Construction</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright text-center mt-4" style="background-color: #c0deff;">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Gasdaniel</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Designed by <a href="https://www.gasdaniel.com/">Gasdaniel Team</a> Distributed by <a href="https://www.gasdaniel.com">GASDANIEL COMPANY</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/purecounter@1.0.5/purecounter_vanilla.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9.0.0/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Enhanced Product Animation
+    const products = document.querySelectorAll('.product');
+    function showProducts() {
+      products.forEach((product, index) => {
+        setTimeout(() => {
+          product.classList.add('show');
+        }, index * 150);
+      });
+    }
+    const productsSection = document.querySelector('.products-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          showProducts();
+          observer.unobserve(productsSection);
+        }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(productsSection);
+
+    // Enhanced News, Announcements, and Jobs Animation
+    const newsItems = document.querySelectorAll('.news-item');
+    const announcementItems = document.querySelectorAll('.announcement-item');
+    const jobItems = document.querySelectorAll('.job-item');
+    function showItems(items) {
+      items.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('show');
+        }, index * 200);
+      });
+    }
+    const mediaSection = document.querySelector('.video-news-section');
+    const mediaObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          showItems(newsItems);
+          showItems(announcementItems);
+          showItems(jobItems);
+          mediaObserver.unobserve(mediaSection);
+        }
+      });
+    }, { threshold: 0.2 });
+    mediaObserver.observe(mediaSection);
+
+    // Share Profile Functionality
+    function shareProfile(name, title, url) {
+      const shareText = `Meet ${name}, our ${title} at GASDANIEL COMPANY. Learn more about our team! ${url}`;
+      if (navigator.share) {
+        navigator.share({
+          title: `${name} - ${title} at GASDANIEL`,
+          text: shareText,
+          url: url
+        }).catch(console.error);
+      } else {
+        window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}`);
+      }
+    }
+
+    // Contact Form Validation
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const subject = document.getElementById('subject');
+      const message = document.getElementById('message');
+      [name, email, subject, message].forEach(field => {
+        field.parentElement.classList.remove('invalid');
+      });
+      let isValid = true;
+      if (!name.value.trim()) {
+        name.parentElement.classList.add('invalid');
+        isValid = false;
+      }
+      if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.parentElement.classList.add('invalid');
+        isValid = false;
+      }
+      if (!subject.value.trim()) {
+        subject.parentElement.classList.add('invalid');
+        isValid = false;
+      }
+      if (!message.value.trim()) {
+        message.parentElement.classList.add('invalid');
+        isValid = false;
+      }
+      if (isValid) {
+        const companyEmail = 'gasdanielcompany@gmail.com';
+        const mailtoSubject = encodeURIComponent(subject.value);
+        const mailtoBody = encodeURIComponent(
+          `Name: ${name.value}\n` +
+          `Email: ${email.value}\n` +
+          `Subject: ${subject.value}\n` +
+          `Message: ${message.value}\n` +
+          `Date: ${new Date().toLocaleDateString()}`
+        );
+        window.location.href = `mailto:${companyEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;
+      }
+    });
+
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+  </script>
+   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Swiper
+            new Swiper('.swiper-container', {
+                // Optional parameters
+                loop: true, // Enable continuous loop mode
+                autoplay: {
+                    delay: 3000, // 3000 milliseconds = 3 seconds
+                    disableOnInteraction: false, // Continue autoplay even after user interaction
+                },
+
+                // If we need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true, // Make pagination dots clickable
+                },
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // Responsive breakpoints
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 1,
+                        spaceBetween: 40,
+                    },
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

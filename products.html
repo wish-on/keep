@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Gasdaniel Product Catalog</title>
+    <meta name="description" content="GASDANIEL COMPANY, your comprehensive engineering solutions provider offering chemicals, equipment, software development, and engineering consultation.">
+    <meta name="keywords" content="gasdaniel, chemicals, laboratory equipment, medical supplies, engineering solutions, ecommerce">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Vendor CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/react@17/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.18.9/babel.min.js"></script>
+
+    <style>
+        /* Loading Screen Styles */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f6f6f6, #b4c3e7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        #loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #d4af37;
+            border-top: 6px solid transparent;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #loading p {
+            color: #d4af37;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>Loading Gasdaniel Catalog...</p>
+    </div>
+
+    <!-- Main Content -->
+    <div id="root" class="hidden"></div>
+
+    <script type="text/babel">
+       const itemsData = [
+  { item: "2-Phenoxyethanol", price: 75000, category: "Organic Chemicals", image: "assets/img/Nproduct/b1.jpg" },
+  { item: "4-Acetamidophenol", price: 65000, category: "Organic Chemicals", image: "assets/img/Nproduct/b2.jpg" },
+  { item: "4-Chloro-m-cresol", price: 295000, category: "Organic Chemicals", image: "assets/img/Nproduct/b3.jpg" },
+  { item: "4-Chloro-m-Xylenol (PCMX)", price: 295000, category: "Organic Chemicals", image: "assets/img/Nproduct/b4.jpg" },
+  { item: "Acaccia Powder", price: 100000, category: "Raw Materials", image: "assets/img/Nproduct/b5.jpg" },
+  { item: "Accucheck Strips", price: 60000, category: "Medical Consumables", image: "assets/img/Nproduct/b6.jpg" },
+  { item: "Acetic Acid", price: 28000, category: "Acids", image: "assets/img/Nproduct/b7.jpg" },
+  { item: "Acetic acid", price: 68250, category: "Acids", image: "assets/img/Nproduct/b8.jpg" },
+  { item: "Acetone", price: 165000, category: "Solvents", image: "assets/img/Nproduct/b9.jpg" },
+  { item: "Acetone 500mls", price: 44000, category: "Solvents", image: "assets/img/Nproduct/b10.jpg" },
+  { item: "Acetonitrile2.5L", price: 90000, category: "Solvents", image: "assets/img/Nproduct/b11.jpg" },
+  { item: "Air Conditioners(AC)", price: 1396000, category: "Laboratory Equipment", image: "assets/img/Nproduct/b12.jpg" },
+  { item: "Aluminium Coat", price: 2750000, category: "Safety Apparel", image: "assets/img/Nproduct/b13.jpg" },
+  { item: "Amaranth Extra Pure", price: 30000, category: "Dyes/Stains", image: "assets/img/Nproduct/b14.jpg" },
+  { item: "Ammeter 0-1A", price: 18000, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b15.jpg" },
+  { item: "Ammeter 0-3A", price: 18000, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b16.jpg" },
+  { item: "Ammeter 0-5A", price: 15000, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b17.jpg" },
+  { item: "Ammeter Dual Range", price: 18000, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b18.jpg" },
+  { item: "Ammonium Acetate", price: 25000, category: "Inorganic Salts", image: "assets/img/Nproduct/b19.jpg" },
+  { item: "Ammonium Bicarbonate 98.5%", price: 15000, category: "Inorganic Salts", image: "assets/img/Nproduct/b20.jpg" },
+  { item: "Ammonium carbonate", price: 19910, category: "Inorganic Salts", image: "assets/img/Nproduct/b21.jpg" },
+  { item: "Ammonium Chloride", price: 30000, category: "Inorganic Salts", image: "assets/img/Nproduct/b22.jpg" },
+  { item: "Ammonium Ferric Citrate", price: 110000, category: "Inorganic Salts", image: "assets/img/Nproduct/b23.jpg" },
+  { item: "Ammonium Ferric Sulphate", price: 30000, category: "Inorganic Salts", image: "assets/img/Nproduct/b24.jpg" },
+  { item: "Ammonium Ferrous Sulphate", price: 15750, category: "Inorganic Salts", image: "assets/img/Nproduct/b25.jpg" },
+  { item: "Ammonium Hydroxide", price: 100000, category: "Bases", image: "assets/img/Nproduct/b26.jpg" },
+  { item: "Ammonium Nitrate", price: 35560, category: "Inorganic Salts", image: "assets/img/Nproduct/b27.jpg" },
+  { item: "Ammonium Oxalate Monohydrate", price: 25000, category: "Inorganic Salts", image: "assets/img/Nproduct/b28.jpg" },
+  { item: "Ammonium Solution imported", price: 44000, category: "Solutions", image: "assets/img/Nproduct/b29.jpg" },
+  { item: "Ammonium Solution Local 2.51", price: 44000, category: "Solutions", image: "assets/img/Nproduct/b30.jpg" },
+  { item: "Ammonium Sulphate", price: 13600, category: "Inorganic Salts", image: "assets/img/Nproduct/b31.jpg" },
+  { item: "Ammonium Sulphide", price: 75000, category: "Inorganic Salts", image: "assets/img/Nproduct/b32.jpg" },
+  { item: "Ammoxycillin caps 250gx100", price: 15000, category: "Pharmaceuticals", image: "assets/img/Nproduct/b33.jpg" },
+  { item: "Angle Valve", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b34.jpg" },
+  { item: "AniseedOil ExtraPure", price: 66000, category: "Essential Oils", image: "assets/img/Nproduct/b35.jpg" },
+  { item: "Arachis Oil Extrapure", price: 90000, category: "Carrier Oils", image: "assets/img/Nproduct/b36.jpg" },
+  { item: "Asot Reagent", price: 59200, category: "Reagents", image: "assets/img/Nproduct/b37.jpg" },
+  { item: "Ball Valves $1/2^{\prime}$ to $5/16^{\prime\prime}$", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b38.jpg" },
+  { item: "Bar Magnet", price: 15000, category: "Magnets", image: "assets/img/Nproduct/b39.jpg" },
+  { item: "Barium Chloride", price: 17750, category: "Inorganic Salts", image: "assets/img/Nproduct/b40.jpg" },
+  { item: "Barium Nitrate", price: 17000, category: "Inorganic Salts", image: "assets/img/Nproduct/b41.jpg" },
+  { item: "Barium Sulphate", price: 15000, category: "Inorganic Salts", image: "assets/img/Nproduct/b42.jpg" },
+  { item: "Basic Fuchsin 85% DyeMicroscopy", price: 50000, category: "Dyes/Stains", image: "assets/img/Nproduct/b43.jpg" },
+  { item: "Beaker Glass", price: 4000, category: "Glassware", image: "assets/img/Nproduct/b44.jpg" },
+  { item: "Beaker Glass 1000Mls", price: 12000, category: "Glassware", image: "assets/img/Nproduct/b45.jpg" },
+  { item: "Beaker Glass 2000MLS", price: 17000, category: "Glassware", image: "assets/img/Nproduct/b46.jpg" },
+  { item: "Beaker Glass 250mls", price: 5000, category: "Glassware", image: "assets/img/Nproduct/b47.jpg" },
+  { item: "Beaker Glass 25mls", price: 5000, category: "Glassware", image: "assets/img/Nproduct/b48.jpg" },
+  { item: "Beaker Glass 500mls", price: 8000, category: "Glassware", image: "assets/img/Nproduct/b49.jpg" },
+  { item: "Beaker Glass 50mls", price: 3200, category: "Glassware", image: "assets/img/Nproduct/b50.jpg" },
+  { item: "Beaker Glass 100mls", price: 4000, category: "Glassware", image: "assets/img/Nproduct/b51.jpg" },
+  { item: "Beaker Plastic 20mls", price: 4000, category: "Plasticware", image: "assets/img/Nproduct/b52.jpg" },
+  { item: "Beaker Plastic 250mls", price: 5500, category: "Plasticware", image: "assets/img/Nproduct/b53.jpg" },
+  { item: "Beaker Plastic 500mls", price: 4400, category: "Plasticware", image: "assets/img/Nproduct/b54.jpg" },
+  { item: "Beaker Plastic100mls", price: 4800, category: "Plasticware", image: "assets/img/Nproduct/b55.jpg" },
+  { item: "Beaker Pyrex 250mls", price: 11000, category: "Pyrex Glassware", image: "assets/img/Nproduct/b56.jpg" },
+  { item: "Beaker Pyrex 100mls", price: 7000, category: "Pyrex Glassware", image: "assets/img/Nproduct/b57.jpg" },
+  { item: "Beaker Pyrex500mls", price: 17000, category: "Pyrex Glassware", image: "assets/img/Nproduct/b58.jpg" },
+  { item: "Beaker Pyrex50mls", price: 5000, category: "Pyrex Glassware", image: "assets/img/Nproduct/b59.jpg" },
+  { item: "Bed sheet (white)", price: 60000, category: "Hospital Linens", image: "assets/img/Nproduct/b60.jpg" },
+  { item: "Bee Hive Shelves 3'", price: 3500, category: "Laboratory Stands & Supports", image: "assets/img/Nproduct/b61.jpg" },
+  { item: "Bees Wax Pure (White)", price: 30000, category: "Raw Materials", image: "assets/img/Nproduct/b62.jpg" },
+  { item: "Benedict Solution1litre", price: 15000, category: "Reagents", image: "assets/img/Nproduct/b63.jpg" },
+  { item: "Bentonite Powder Extra Pure", price: 34000, category: "Raw Materials", image: "assets/img/Nproduct/b64.jpg" },
+  { item: "Benzaldehyde 98.5% Extrapure", price: 55000, category: "Organic Chemicals", image: "assets/img/Nproduct/b65.jpg" },
+  { item: "Benzalkonium Chloride 50% w/v", price: 55000, category: "Disinfectants", image: "assets/img/Nproduct/b66.jpg" },
+  { item: "Benzoic Acid 99.5%", price: 30000, category: "Organic Chemicals", image: "assets/img/Nproduct/b67.jpg" },
+  { item: "Benzyl Benzoate 99% Extrapure", price: 110000, category: "Organic Chemicals", image: "assets/img/Nproduct/b68.jpg" },
+  { item: "Bib tap pex 1/2'", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b69.jpg" },
+  { item: "Blue Pippete Tips", price: 20300, category: "Pipette Accessories", image: "assets/img/Nproduct/b70.jpg" },
+  { item: "Bobath ball", price: 65000, category: "Rehabilitation Equipment", image: "assets/img/Nproduct/b71.jpg" },
+  { item: "Boiling tube brush", price: 0, category: "Laboratory Brushes", image: "assets/img/Nproduct/b72.jpg" },
+  { item: "Boiling Tube Glass", price: 4000, category: "Glassware", image: "assets/img/Nproduct/b73.jpg" },
+  { item: "Boiling Tube Pyrex", price: 3500, category: "Pyrex Glassware", image: "assets/img/Nproduct/b74.jpg" },
+  { item: "Borax (decahydrate) 99%", price: 30000, category: "Inorganic Salts", image: "assets/img/Nproduct/b75.jpg" },
+  { item: "Boric Acid (Powder) 99.5%", price: 30000, category: "Acids", image: "assets/img/Nproduct/b76.jpg" },
+  { item: "Bosch Hot Air Gun", price: 160000, category: "Laboratory Tools", image: "assets/img/Nproduct/b77.jpg" },
+  { item: "Boss Head 1", price: 5500, category: "Laboratory Clamps & Holders", image: "assets/img/Nproduct/b78.jpg" },
+  { item: "Bp Machine", price: 65000, category: "Diagnostic Equipment", image: "assets/img/Nproduct/b79.jpg" },
+  { item: "Brilliant Green Indicator 95%", price: 65000, category: "Indicators", image: "assets/img/Nproduct/b80.jpg" },
+  { item: "Bunsen Burner", price: 15000, category: "Heating Equipment", image: "assets/img/Nproduct/b81.jpg" },
+  { item: "Burrete 10mls", price: 7500, category: "Glassware", image: "assets/img/Nproduct/b82.jpg" },
+  { item: "Burrete Acrylic", price: 30000, category: "Plasticware", image: "assets/img/Nproduct/b83.jpg" },
+  { item: "Burrete Brush", price: 3400, category: "Laboratory Brushes", image: "assets/img/Nproduct/b84.jpg" },
+  { item: "Burrete Rotaflow", price: 15000, category: "Glassware", image: "assets/img/Nproduct/b85.jpg" },
+  { item: "Burrete With Clip", price: 8000, category: "Glassware", image: "assets/img/Nproduct/b86.jpg" },
+  { item: "Butanedioic Acid/Succinic acid", price: 110000, category: "Organic Chemicals", image: "assets/img/Nproduct/b87.jpg" },
+  { item: "Calamine 98%", price: 100000, category: "Raw Materials", image: "assets/img/Nproduct/b88.jpg" },
+  { item: "Calamine Powder 500G local", price: 55000, category: "Raw Materials", image: "assets/img/Nproduct/b89.jpg" },
+  { item: "Calcium Carbonate", price: 13000, category: "Inorganic Salts", image: "assets/img/Nproduct/b90.jpg" },
+  { item: "Calcium chloride", price: 30000, category: "Inorganic Salts", image: "assets/img/Nproduct/b91.jpg" },
+  { item: "Calcium gluconate inj", price: 21000, category: "Pharmaceuticals", image: "assets/img/Nproduct/b92.jpg" },
+  { item: "Calcium Hydroxide 95%", price: 15650, category: "Bases", image: "assets/img/Nproduct/b93.jpg" },
+  { item: "Calcium Nitrate", price: 19950, category: "Inorganic Salts", image: "assets/img/Nproduct/b94.jpg" },
+  { item: "Calcium Sulphate", price: 15000, category: "Inorganic Salts", image: "assets/img/Nproduct/b95.jpg" },
+  { item: "Calculator Simple", price: 25000, category: "Office Supplies", image: "assets/img/Nproduct/b96.jpg" },
+  { item: "Calicium Chrolide", price: 13500, category: "Inorganic Salts", image: "assets/img/Nproduct/b97.jpg" },
+  { item: "Camphor 95% Extrapure", price: 72000, category: "Organic Chemicals", image: "assets/img/Nproduct/b98.jpg" },
+  { item: "Carbopol 940", price: 140000, category: "Polymers", image: "assets/img/Nproduct/b99.jpg" },
+  { item: "Carboxy Methyl CelluloseSodium", price: 100000, category: "Polymers", image: "assets/img/Nproduct/b100.jpg" },
+  { item: "Castor Oil Extrapure (Refined)", price: 34000, category: "Carrier Oils", image: "assets/img/Nproduct/b101.jpg" },
+  { item: "Ceiling Fan Panasonic", price: 245000, category: "Laboratory Equipment", image: "assets/img/Nproduct/b102.jpg" },
+  { item: "Cell Holder Double", price: 7000, category: "Electrical Components", image: "assets/img/Nproduct/b103.jpg" },
+  { item: "Cell Holder Single", price: 4300, category: "Electrical Components", image: "assets/img/Nproduct/b104.jpg" },
+  { item: "Centrifuge 4holes", price: 45000, category: "Laboratory Equipment", image: "assets/img/Nproduct/b105.jpg" },
+  { item: "Centrifuge Tube 50MLS", price: 35000, category: "Plasticware", image: "assets/img/Nproduct/b106.jpg" },
+  { item: "Centrifuge Tube 15MLS P/50", price: 250000, category: "Plasticware", image: "assets/img/Nproduct/b107.jpg" },
+  { item: "Cetostearyl Alcohol Extrapure", price: 50000, category: "Alcohols", image: "assets/img/Nproduct/b108.jpg" },
+  { item: "Cetriaxione 1gm", price: 5500, category: "Pharmaceuticals", image: "assets/img/Nproduct/b109.jpg" },
+  { item: "Cetrimide 96% Extrapure", price: 44000, category: "Disinfectants", image: "assets/img/Nproduct/b110.jpg" },
+  { item: "CHEMICALS", price: 0, category: "General Chemicals", image: "assets/img/Nproduct/b111.jpg" },
+  { item: "Chloroform 2.5litre", price: 65000, category: "Solvents", image: "assets/img/Nproduct/b112.jpg" },
+  { item: "Chloroform 500mls", price: 30000, category: "Solvents", image: "assets/img/Nproduct/b113.jpg" },
+  { item: "Chroloform Loba", price: 125000, category: "Solvents", image: "assets/img/Nproduct/b114.jpg" },
+  { item: "Chromium Chrolide", price: 79900, category: "Inorganic Salts", image: "assets/img/Nproduct/b115.jpg" },
+  { item: "Chromotographic Column", price: 540000, category: "Laboratory Equipment", image: "assets/img/Nproduct/b116.jpg" },
+  { item: "Cinnamon Oil Extrapure", price: 75000, category: "Essential Oils", image: "assets/img/Nproduct/b117.jpg" },
+  { item: "Citric Acid Anhydrous 99.5%", price: 16000, category: "Acids", image: "assets/img/Nproduct/b118.jpg" },
+  { item: "Coal Tar", price: 75000, category: "Raw Materials", image: "assets/img/Nproduct/b119.jpg" },
+  { item: "Cobalt(II) Chrolide Test Paper", price: 15000, category: "Test Papers", image: "assets/img/Nproduct/b120.jpg" },
+  { item: "Codliver Oil Liquid", price: 34000, category: "Carrier Oils", image: "assets/img/Nproduct/b121.jpg" },
+  { item: "Combined therapeutic ultrasound (Machine)", price: 400000, category: "Medical Equipment", image: "assets/img/Nproduct/b122.jpg" },
+  { item: "Concave Mirror", price: 0, category: "Optical Equipment", image: "assets/img/Nproduct/b123.jpg" },
+  { item: "Conduit pipe 1/2\"", price: 4500, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b124.jpg" },
+  { item: "Conical Flask 250ml", price: 5400, category: "Glassware", image: "assets/img/Nproduct/b125.jpg" },
+  { item: "Connecting Wire", price: 20000, category: "Electrical Components", image: "assets/img/Nproduct/b126.jpg" },
+  { item: "Control Valve", price: 80000, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b127.jpg" },
+  { item: "Converging lens", price: 4500, category: "Optical Equipment", image: "assets/img/Nproduct/b128.jpg" },
+  { item: "Copper (II) Nitrate Tri 95%", price: 54400, category: "Inorganic Salts", image: "assets/img/Nproduct/b129.jpg" },
+  { item: "Copper (II) Sulphate Anhy 98%", price: 63000, category: "Inorganic Salts", image: "assets/img/Nproduct/b130.jpg" },
+  { item: "Copper (II) Sulphate pentahydra", price: 31300, category: "Inorganic Salts", image: "assets/img/Nproduct/b131.jpg" },
+  { item: "Copper Calorimeter", price: 16550, category: "Laboratory Equipment", image: "assets/img/Nproduct/b132.jpg" },
+  { item: "Copper Chloride", price: 31300, category: "Inorganic Salts", image: "assets/img/Nproduct/b133.jpg" },
+  { item: "Copper fillings", price: 55000, category: "Metals", image: "assets/img/Nproduct/b134.jpg" },
+  { item: "copper metal", price: 35000, category: "Metals", image: "assets/img/Nproduct/b135.jpg" },
+  { item: "Copper Pipe", price: 115000, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b136.jpg" },
+  { item: "Copper Wire", price: 25000, category: "Electrical Components", image: "assets/img/Nproduct/b137.jpg" },
+  { item: "Copper(11) Carbonate(basic)Extra", price: 52450, category: "Inorganic Salts", image: "assets/img/Nproduct/b138.jpg" },
+  { item: "Cork Bored", price: 10500, category: "Laboratory Consumables", image: "assets/img/Nproduct/b139.jpg" },
+  { item: "Cork Rubber", price: 2000, category: "Laboratory Consumables", image: "assets/img/Nproduct/b140.jpg" },
+  { item: "Corner chair", price: 705000, category: "Hospital Furniture", image: "assets/img/Nproduct/b141.jpg" },
+  { item: "Costantine Wire 26SWG", price: 8500, category: "Electrical Components", image: "assets/img/Nproduct/b142.jpg" },
+  { item: "Costantine Wire 28SWG", price: 8500, category: "Electrical Components", image: "assets/img/Nproduct/b143.jpg" },
+  { item: "Costantine Wire 30SWG", price: 8500, category: "Electrical Components", image: "assets/img/Nproduct/b144.jpg" },
+  { item: "Cotton Gloves", price: 8500, category: "Safety Apparel", image: "assets/img/Nproduct/b145.jpg" },
+  { item: "Cotton Thread", price: 4000, category: "Laboratory Consumables", image: "assets/img/Nproduct/b146.jpg" },
+  { item: "Cotton wool", price: 30000, category: "Medical Consumables", image: "assets/img/Nproduct/b147.jpg" },
+  { item: "Crip sedo $5/16$", price: 1500, category: "Laboratory Clamps & Holders", image: "assets/img/Nproduct/b148.jpg" },
+  { item: "Crocodile Clip", price: 1500, category: "Electrical Components", image: "assets/img/Nproduct/b149.jpg" },
+  { item: "Crucible With Lid", price: 3800, category: "Laboratory Porcelainware", image: "assets/img/Nproduct/b150.jpg" },
+  { item: "Crystal Violet 88%", price: 34000, category: "Dyes/Stains", image: "assets/img/Nproduct/b151.jpg" },
+  { item: "Crystal Violet Powder 25g", price: 62600, category: "Dyes/Stains", image: "assets/img/Nproduct/b152.jpg" },
+  { item: "Culture Bottle 250MLS", price: 55000, category: "Glassware", image: "assets/img/Nproduct/b153.jpg" },
+  { item: "Delivery Tube", price: 2500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b154.jpg" },
+  { item: "Delivery Tubee Per kg", price: 18000, category: "Laboratory Tubing", image: "assets/img/Nproduct/b155.jpg" },
+  { item: "Density Bottle 50mls", price: 8500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b156.jpg" },
+  { item: "Density bottles 25mls", price: 4000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b157.jpg" },
+  { item: "Detergent Jik", price: 35000, category: "Cleaning Supplies", image: "assets/img/Nproduct/b158.jpg" },
+  { item: "Detergent Soap", price: 35000, category: "Cleaning Supplies", image: "assets/img/Nproduct/b159.jpg" },
+  { item: "Dextrose/Glucose", price: 15000, category: "Sugars", image: "assets/img/Nproduct/b160.jpg" },
+  { item: "Dextrose Agar", price: 295000, category: "Culture Media", image: "assets/img/Nproduct/b161.jpg" },
+  { item: "Diazepam Injection", price: 4500, category: "Pharmaceuticals", image: "assets/img/Nproduct/b162.jpg" },
+  { item: "DicloroMethane 2.5", price: 165000, category: "Solvents", image: "assets/img/Nproduct/b163.jpg" },
+  { item: "Diethyl Ether 98% For Synthesis", price: 75000, category: "Solvents", image: "assets/img/Nproduct/b164.jpg" },
+  { item: "Digital Scale", price: 185000, category: "Measuring Instruments", image: "assets/img/Nproduct/b165.jpg" },
+  { item: "Digital Thermometer", price: 15000, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b166.jpg" },
+  { item: "Disposable Syringe with needles", price: 600, category: "Medical Consumables", image: "assets/img/Nproduct/b167.jpg" },
+  { item: "Dissecting Forceps", price: 20000, category: "Dissection Tools", image: "assets/img/Nproduct/b168.jpg" },
+  { item: "Dissecting Kit Large Size", price: 15500, category: "Dissection Tools", image: "assets/img/Nproduct/b169.jpg" },
+  { item: "Dissecting Tray 1", price: 13500, category: "Dissection Tools", image: "assets/img/Nproduct/b170.jpg" },
+  { item: "Distilled Water", price: 31000, category: "Solvents", image: "assets/img/Nproduct/b171.jpg" },
+  { item: "Double Beam Balance", price: 810000, category: "Measuring Instruments", image: "assets/img/Nproduct/b172.jpg" },
+  { item: "Dropper Dispsable", price: 600, category: "Laboratory Consumables", image: "assets/img/Nproduct/b173.jpg" },
+  { item: "Dropper With Teat", price: 1500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b174.jpg" },
+  { item: "Dropping Bottle 125mls clear", price: 5000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b175.jpg" },
+  { item: "Dry Cell AAA", price: 0, category: "Electrical Components", image: "assets/img/Nproduct/b176.jpg" },
+  { item: "Dry Cell ABCV", price: 1850, category: "Electrical Components", image: "assets/img/Nproduct/b177.jpg" },
+  { item: "Dry Cell DD", price: 1850, category: "Electrical Components", image: "assets/img/Nproduct/b178.jpg" },
+  { item: "Dumb bells (1/2kg,1kg,2kg,3kg.5kg)", price: 255000, category: "Rehabilitation Equipment", image: "assets/img/Nproduct/b179.jpg" },
+  { item: "Edta vacutainer tubes 1*100", price: 38900, category: "Medical Consumables", image: "assets/img/Nproduct/b180.jpg" },
+  { item: "Egg Albumine", price: 30000, category: "Proteins", image: "assets/img/Nproduct/b181.jpg" },
+  { item: "Egg Albumine 200g", price: 115000, category: "Proteins", image: "assets/img/Nproduct/b182.jpg" },
+  { item: "Egg Albumine 25gm", price: 20000, category: "Proteins", image: "assets/img/Nproduct/b183.jpg" },
+  { item: "Egg Albumine 500g", price: 118850, category: "Proteins", image: "assets/img/Nproduct/b184.jpg" },
+  { item: "Elbow 1 1/2'", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b185.jpg" },
+  { item: "Electronic Balance", price: 185000, category: "Measuring Instruments", image: "assets/img/Nproduct/b186.jpg" },
+  { item: "Emulsifying Wax local", price: 44000, category: "Waxes & Emulsifiers", image: "assets/img/Nproduct/b187.jpg" },
+  { item: "EmulSifying Wax Extra Pure", price: 15000, category: "Waxes & Emulsifiers", image: "assets/img/Nproduct/b188.jpg" },
+  { item: "Eosin y Powder", price: 85000, category: "Dyes/Stains", image: "assets/img/Nproduct/b189.jpg" },
+  { item: "Ethanol", price: 165000, category: "Alcohols", image: "assets/img/Nproduct/b190.jpg" },
+  { item: "Ethanol Local 2.5ltr", price: 35000, category: "Alcohols", image: "assets/img/Nproduct/b191.jpg" },
+  { item: "Ethanol Local 5ltr", price: 75000, category: "Alcohols", image: "assets/img/Nproduct/b192.jpg" },
+  { item: "Ethyl Acetate", price: 165000, category: "Solvents", image: "assets/img/Nproduct/b193.jpg" },
+  { item: "Ethylen Tetra Acetic Acid 99%", price: 44000, category: "Acids", image: "assets/img/Nproduct/b194.jpg" },
+  { item: "Eucalyptus Oil", price: 97000, category: "Essential Oils", image: "assets/img/Nproduct/b195.jpg" },
+  { item: "Eureca Can", price: 3500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b196.jpg" },
+  { item: "Evaporating Dish Glass", price: 15000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b197.jpg" },
+  { item: "Examination Gloves", price: 125000, category: "Medical Consumables", image: "assets/img/Nproduct/b198.jpg" },
+  { item: "Face Shield", price: 500000, category: "Safety Apparel", image: "assets/img/Nproduct/b199.jpg" },
+  { item: "Ferric Chloride Anhydrous", price: 23000, category: "Inorganic Salts", image: "assets/img/Nproduct/b200.jpg" },
+  { item: "Ferric Nitrate", price: 23000, category: "Inorganic Salts", image: "assets/img/Nproduct/b201.jpg" },
+  { item: "Ferric Sulphate Monohydrate", price: 23000, category: "Inorganic Salts", image: "assets/img/Nproduct/b202.jpg" },
+  { item: "Ferrous Chloride", price: 31300, category: "Inorganic Salts", image: "assets/img/Nproduct/b203.jpg" },
+  { item: "Ferrous Chrolide", price: 32000, category: "Inorganic Salts", image: "assets/img/Nproduct/b204.jpg" },
+  { item: "Ferrous Nitrate", price: 15000, category: "Inorganic Salts", image: "assets/img/Nproduct/b205.jpg" },
+  { item: "Ferrous Sulphate", price: 13600, category: "Inorganic Salts", image: "assets/img/Nproduct/b206.jpg" },
+  { item: "Ferrous Sulphide", price: 23000, category: "Inorganic Salts", image: "assets/img/Nproduct/b207.jpg" },
+  { item: "Fillament Lamp", price: 5000, category: "Electrical Components", image: "assets/img/Nproduct/b208.jpg" },
+  { item: "Filter Funel", price: 4100, category: "Laboratory Glassware", image: "assets/img/Nproduct/b209.jpg" },
+  { item: "Filter Funnel", price: 1500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b210.jpg" },
+  { item: "Filter Paper Watman 12.5cm", price: 12400, category: "Filtration Supplies", image: "assets/img/Nproduct/b211.jpg" },
+  { item: "Filter Paper Watman 15cm", price: 15000, category: "Filtration Supplies", image: "assets/img/Nproduct/b212.jpg" },
+  { item: "Flat Bottomed flask", price: 9500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b213.jpg" },
+  { item: "Flat Bottomed Flask 250mls", price: 9500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b214.jpg" },
+  { item: "Forcept", price: 4500, category: "Laboratory Tools", image: "assets/img/Nproduct/b215.jpg" },
+  { item: "Formalin 0.5ltr", price: 44000, category: "Preservatives", image: "assets/img/Nproduct/b216.jpg" },
+  { item: "Formaline Solution 37-41%", price: 97000, category: "Preservatives", image: "assets/img/Nproduct/b217.jpg" },
+  { item: "French Chalk Powder Extrapure", price: 48500, category: "Raw Materials", image: "assets/img/Nproduct/b218.jpg" },
+  { item: "G Clamp", price: 13500, category: "Laboratory Clamps & Holders", image: "assets/img/Nproduct/b219.jpg" },
+  { item: "Galvanometer Zero Centered", price: 14500, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b220.jpg" },
+  { item: "Gas Cylinder 15KG", price: 217500, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b221.jpg" },
+  { item: "Gas Elbow joint $5/16$", price: 18500, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b222.jpg" },
+  { item: "Gas Jar", price: 16500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b223.jpg" },
+  { item: "Gas Jar cover", price: 4500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b224.jpg" },
+  { item: "Gas socket 5/16", price: 18500, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b225.jpg" },
+  { item: "Gas Tank 30kg", price: 123000, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b226.jpg" },
+  { item: "Gas Tap double", price: 59500, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b227.jpg" },
+  { item: "Gas Tap Single", price: 54500, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b228.jpg" },
+  { item: "Gas Tap two Way", price: 59500, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b229.jpg" },
+  { item: "Gas tap Two way $5/16$", price: 54000, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b230.jpg" },
+  { item: "GasTee joint $5/16$", price: 18500, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b231.jpg" },
+  { item: "Gate valve $1/2^{\prime\prime}$", price: 15800, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b232.jpg" },
+  { item: "Gauze Large", price: 59500, category: "Medical Consumables", image: "assets/img/Nproduct/b233.jpg" },
+  { item: "Gauze.", price: 66500, category: "Medical Consumables", image: "assets/img/Nproduct/b234.jpg" },
+  { item: "Gelatin Powder For Bacteriology", price: 48500, category: "Culture Media", image: "assets/img/Nproduct/b235.jpg" },
+  { item: "Gels", price: 35000, category: "Medical Consumables", image: "assets/img/Nproduct/b236.jpg" },
+  { item: "Gentian violet 25g", price: 59200, category: "Dyes/Stains", image: "assets/img/Nproduct/b237.jpg" },
+  { item: "Giemsa Stain sock solution 500m", price: 76200, category: "Dyes/Stains", image: "assets/img/Nproduct/b238.jpg" },
+  { item: "Glass Block 75x50x12mm", price: 5400, category: "Optical Equipment", image: "assets/img/Nproduct/b239.jpg" },
+  { item: "Glass Block 75x50x15mm", price: 5400, category: "Optical Equipment", image: "assets/img/Nproduct/b240.jpg" },
+  { item: "Glass Block Large", price: 5000, category: "Optical Equipment", image: "assets/img/Nproduct/b241.jpg" },
+  { item: "Glass Prism 38x38mm", price: 5420, category: "Optical Equipment", image: "assets/img/Nproduct/b242.jpg" },
+  { item: "Glass Prism 50x50mm", price: 7000, category: "Optical Equipment", image: "assets/img/Nproduct/b243.jpg" },
+  { item: "Glass Reagent Spray Bottle", price: 522000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b244.jpg" },
+  { item: "Gloves Acid Proof", price: 11000, category: "Safety Apparel", image: "assets/img/Nproduct/b245.jpg" },
+  { item: "Glucose Ar", price: 245000, category: "Sugars", image: "assets/img/Nproduct/b246.jpg" },
+  { item: "Glucose Plus", price: 64000, category: "Sugars", image: "assets/img/Nproduct/b247.jpg" },
+  { item: "Glycerol 98% Extrapure", price: 30000, category: "Alcohols", image: "assets/img/Nproduct/b248.jpg" },
+  { item: "Golori Burrete", price: 2500, category: "Glassware", image: "assets/img/Nproduct/b249.jpg" },
+  { item: "Gram Iodimne 2,5ltr", price: 54800, category: "Reagents", image: "assets/img/Nproduct/b250.jpg" },
+  { item: "Gum Tragacanth", price: 100000, category: "Raw Materials", image: "assets/img/Nproduct/b251.jpg" },
+  { item: "Half Metre Ruler", price: 2700, category: "Measuring Instruments", image: "assets/img/Nproduct/b252.jpg" },
+  { item: "Hand Lens", price: 2700, category: "Optical Equipment", image: "assets/img/Nproduct/b253.jpg" },
+  { item: "Harris Hematoxyline Powder 50g", price: 565000, category: "Dyes/Stains", image: "assets/img/Nproduct/b254.jpg" },
+  { item: "HCG Test Strips", price: 18600, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b255.jpg" },
+  { item: "HEP b surface AG", price: 54800, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b256.jpg" },
+  { item: "Herical Spring", price: 3500, category: "Laboratory Components", image: "assets/img/Nproduct/b257.jpg" },
+  { item: "Histology blunt forceps", price: 10120, category: "Histology Tools", image: "assets/img/Nproduct/b258.jpg" },
+  { item: "Histology hot plate", price: 435000, category: "Histology Equipment", image: "assets/img/Nproduct/b259.jpg" },
+  { item: "Histology slide mounting medal", price: 145000, category: "Histology Tools", image: "assets/img/Nproduct/b260.jpg" },
+  { item: "Histology straining bucketsdis/", price: 185300, category: "Histology Equipment", image: "assets/img/Nproduct/b261.jpg" },
+  { item: "Histology water bath(mh3517)", price: 605000, category: "Histology Equipment", image: "assets/img/Nproduct/b262.jpg" },
+  { item: "Horse clamp", price: 2500, category: "Laboratory Clamps & Holders", image: "assets/img/Nproduct/b263.jpg" },
+  { item: "Hose Pipe", price: 102000, category: "Laboratory Tubing", image: "assets/img/Nproduct/b264.jpg" },
+  { item: "Hose pipe 10mm", price: 110000, category: "Laboratory Tubing", image: "assets/img/Nproduct/b265.jpg" },
+  { item: "Hose Pipe 50m", price: 123000, category: "Laboratory Tubing", image: "assets/img/Nproduct/b266.jpg" },
+  { item: "Hospital Beds", price: 1950000, category: "Hospital Furniture", image: "assets/img/Nproduct/b267.jpg" },
+  { item: "Hot Plate", price: 297000, category: "Heating Equipment", image: "assets/img/Nproduct/b268.jpg" },
+  { item: "Hydrochloric Acid 35% Extrapure", price: 48100, category: "Acids", image: "assets/img/Nproduct/b269.jpg" },
+  { item: "Hydrocoleter", price: 1190000, category: "Medical Equipment", image: "assets/img/Nproduct/b270.jpg" },
+  { item: "Hydrocortisone Acetate 97%", price: 100000, category: "Pharmaceutical Raw Materials", image: "assets/img/Nproduct/b271.jpg" },
+  { item: "Hydrogen Peroxide", price: 49000, category: "Oxidizers", image: "assets/img/Nproduct/b272.jpg" },
+  { item: "Hydrogen Sulphide", price: 43000, category: "Gases", image: "assets/img/Nproduct/b273.jpg" },
+  { item: "Hydrometee", price: 36000, category: "Measuring Instruments", image: "assets/img/Nproduct/b274.jpg" },
+  { item: "Illuminate Object", price: 8500, category: "Optical Equipment", image: "assets/img/Nproduct/b275.jpg" },
+  { item: "Indicator Papers-(pH 1.0-14.0)", price: 15000, category: "Test Papers", image: "assets/img/Nproduct/b276.jpg" },
+  { item: "Iodine (Resublimed) 98.5%", price: 54500, category: "Halogens", image: "assets/img/Nproduct/b277.jpg" },
+  { item: "Iodine Solution 1ltr", price: 15000, category: "Solutions", image: "assets/img/Nproduct/b278.jpg" },
+  { item: "Ips $3/4^{\prime}\times1/2^{\prime}$", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b279.jpg" },
+  { item: "Ips Bush $3/4^{\prime\prime}$ to $1/2^{\prime\prime}$", price: 3700, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b280.jpg" },
+  { item: "Ips Elbow $1/2^{\prime\prime}$", price: 2500, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b281.jpg" },
+  { item: "Ips Elbow $3/4^{\prime\prime}$", price: 1500, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b282.jpg" },
+  { item: "Ips Nipple $1/2^{\prime\prime}$", price: 2500, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b283.jpg" },
+  { item: "Ips Pipe $1/2^{\prime\prime}$", price: 14800, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b284.jpg" },
+  { item: "Ips Socket $1/2^{\prime\prime}$", price: 3200, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b285.jpg" },
+  { item: "Ips Tee 1 $11/2^{\prime}$", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b286.jpg" },
+  { item: "Ips Union $1/2^{\prime\prime}$", price: 4400, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b287.jpg" },
+  { item: "Ips union 3/4'", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b288.jpg" },
+  { item: "IpsTee 1/2\"", price: 3300, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b289.jpg" },
+  { item: "Iso Butanol", price: 84000, category: "Alcohols", image: "assets/img/Nproduct/b290.jpg" },
+  { item: "Jockey Pencil", price: 3800, category: "Electrical Components", image: "assets/img/Nproduct/b291.jpg" },
+  { item: "Kaolin Extrapure (Heavy)", price: 43000, category: "Raw Materials", image: "assets/img/Nproduct/b292.jpg" },
+  { item: "Katamine Injection", price: 35000, category: "Pharmaceuticals", image: "assets/img/Nproduct/b293.jpg" },
+  { item: "Kitchen Sink", price: 218000, category: "Laboratory Sinks", image: "assets/img/Nproduct/b294.jpg" },
+  { item: "Kn95 Mask", price: 4500, category: "Medical Consumables", image: "assets/img/Nproduct/b295.jpg" },
+  { item: "Knee strengthen machine", price: 2240000, category: "Rehabilitation Equipment", image: "assets/img/Nproduct/b296.jpg" },
+  { item: "Knife Edge", price: 4000, category: "Laboratory Tools", image: "assets/img/Nproduct/b297.jpg" },
+  { item: "Kovacs Reagent", price: 59900, category: "Reagents", image: "assets/img/Nproduct/b298.jpg" },
+  { item: "L-Ascorbic Acid 99% Extrapure", price: 23000, category: "Organic Chemicals", image: "assets/img/Nproduct/b299.jpg" },
+  { item: "Lable Large", price: 3200, category: "Laboratory Supplies", image: "assets/img/Nproduct/b300.jpg" },
+  { item: "Lable Small", price: 3200, category: "Laboratory Supplies", image: "assets/img/Nproduct/b301.jpg" },
+  { item: "Laboratory Coat", price: 35000, category: "Safety Apparel", image: "assets/img/Nproduct/b302.jpg" },
+  { item: "Laboratory Sink", price: 65000, category: "Laboratory Sinks", image: "assets/img/Nproduct/b303.jpg" },
+  { item: "Lactose Monohydrate Extrapure", price: 30000, category: "Sugars", image: "assets/img/Nproduct/b304.jpg" },
+  { item: "Lanolin Anhydrous Extra Pure", price: 111000, category: "Raw Materials", image: "assets/img/Nproduct/b305.jpg" },
+  { item: "Lead Acetate", price: 44950, category: "Inorganic Salts", image: "assets/img/Nproduct/b306.jpg" },
+  { item: "Lead Carbonate 98% Extrapure", price: 35000, category: "Inorganic Salts", image: "assets/img/Nproduct/b307.jpg" },
+  { item: "Lead Chloride", price: 35500, category: "Inorganic Salts", image: "assets/img/Nproduct/b308.jpg" },
+  { item: "Lead Nitrate 99% Extrapure", price: 21000, category: "Inorganic Salts", image: "assets/img/Nproduct/b309.jpg" },
+  { item: "Lemon Oil Extrapure", price: 73000, category: "Essential Oils", image: "assets/img/Nproduct/b310.jpg" },
+  { item: "Lignocaine inj 30ml", price: 15000, category: "Pharmaceuticals", image: "assets/img/Nproduct/b311.jpg" },
+  { item: "Lignocaine inj 50mls", price: 17000, category: "Pharmaceuticals", image: "assets/img/Nproduct/b312.jpg" },
+  { item: "Lime Waterr", price: 15000, category: "Solutions", image: "assets/img/Nproduct/b313.jpg" },
+  { item: "Linsed Oil Extrapure", price: 54500, category: "Carrier Oils", image: "assets/img/Nproduct/b314.jpg" },
+  { item: "Liquid Parafin", price: 75500, category: "Hydrocarbons", image: "assets/img/Nproduct/b315.jpg" },
+  { item: "Litmus Paper Blue", price: 2900, category: "Test Papers", image: "assets/img/Nproduct/b316.jpg" },
+  { item: "Litmus Paper Red", price: 2900, category: "Test Papers", image: "assets/img/Nproduct/b317.jpg" },
+  { item: "Magic pipe 1 1/2\"", price: 3800, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b318.jpg" },
+  { item: "Magnesium Carbonate Basic 40%", price: 34500, category: "Inorganic Salts", image: "assets/img/Nproduct/b319.jpg" },
+  { item: "Magnesium Chloride Hexa 98%", price: 20000, category: "Inorganic Salts", image: "assets/img/Nproduct/b320.jpg" },
+  { item: "Magnesium Hydroxide 95% Extrapu", price: 30000, category: "Bases", image: "assets/img/Nproduct/b321.jpg" },
+  { item: "Magnesium Metal Turning", price: 54500, category: "Metals", image: "assets/img/Nproduct/b322.jpg" },
+  { item: "Magnesium Oxide", price: 34000, category: "Oxides", image: "assets/img/Nproduct/b323.jpg" },
+  { item: "Magnesium Ribbon", price: 6500, category: "Metals", image: "assets/img/Nproduct/b324.jpg" },
+  { item: "Magnesium Sulphate Hepta 99%", price: 15000, category: "Inorganic Salts", image: "assets/img/Nproduct/b325.jpg" },
+  { item: "Magnesium sulphate inj 50% 10", price: 20000, category: "Pharmaceuticals", image: "assets/img/Nproduct/b326.jpg" },
+  { item: "Magnesium Trisilicate Hydrate P", price: 116000, category: "Raw Materials", image: "assets/img/Nproduct/b327.jpg" },
+  { item: "Magnetic Stirrer", price: 215000, category: "Laboratory Equipment", image: "assets/img/Nproduct/b328.jpg" },
+  { item: "Magnetic Compas", price: 3850, category: "Measuring Instruments", image: "assets/img/Nproduct/b329.jpg" },
+  { item: "Magnetic stirer with magnets on", price: 215000, category: "Laboratory Equipment", image: "assets/img/Nproduct/b330.jpg" },
+  { item: "Malachite Green 25g", price: 77200, category: "Dyes/Stains", image: "assets/img/Nproduct/b331.jpg" },
+  { item: "Male connector 3/4'", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b332.jpg" },
+  { item: "Manganise IV Oxide", price: 35500, category: "Oxides", image: "assets/img/Nproduct/b333.jpg" },
+  { item: "Masking Tape", price: 4000, category: "Office Supplies", image: "assets/img/Nproduct/b334.jpg" },
+  { item: "Measuring Cylinder 1000mls", price: 30000, category: "Glassware", image: "assets/img/Nproduct/b335.jpg" },
+  { item: "Measuring Cylinder 100mls", price: 6500, category: "Glassware", image: "assets/img/Nproduct/b336.jpg" },
+  { item: "Measuring Cylinder 10mls", price: 3800, category: "Glassware", image: "assets/img/Nproduct/b337.jpg" },
+  { item: "Measuring Cylinder 20mls", price: 5000, category: "Glassware", image: "assets/img/Nproduct/b338.jpg" },
+  { item: "Measuring Cylinder 25mls", price: 4000, category: "Glassware", image: "assets/img/Nproduct/b339.jpg" },
+  { item: "Measuring Cylinder 500mls", price: 13500, category: "Glassware", image: "assets/img/Nproduct/b340.jpg" },
+  { item: "Measuring Cylinder 50ml Plastic", price: 5000, category: "Plasticware", image: "assets/img/Nproduct/b341.jpg" },
+  { item: "Measuring Cylinder 50mls", price: 4400, category: "Glassware", image: "assets/img/Nproduct/b342.jpg" },
+  { item: "Measuring Cylinder Plastic 25ml", price: 5000, category: "Plasticware", image: "assets/img/Nproduct/b343.jpg" },
+  { item: "Measuring Cylinder Plastic 100ml", price: 7500, category: "Plasticware", image: "assets/img/Nproduct/b344.jpg" },
+  { item: "Media Culture Bottle Amber 1000", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b345.jpg" },
+  { item: "Media Culture Bottle Amber 100m", price: 35000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b346.jpg" },
+  { item: "Media Culture Bottle Amber 2000", price: 100000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b347.jpg" },
+  { item: "Media Culture Bottle Amber 500m", price: 49200, category: "Laboratory Glassware", image: "assets/img/Nproduct/b348.jpg" },
+  { item: "MEDICAL EQUIPMENTS", price: 0, category: "General Medical Equipment", image: "assets/img/Nproduct/b349.jpg" },
+  { item: "Mentha Pepprita Oil Extrapure", price: 185000, category: "Essential Oils", image: "assets/img/Nproduct/b350.jpg" },
+  { item: "Mercuric chloride 500g", price: 275000, category: "Inorganic Salts", image: "assets/img/Nproduct/b351.jpg" },
+  { item: "Mercuric oxide 50g", price: 295000, category: "Oxides", image: "assets/img/Nproduct/b352.jpg" },
+  { item: "Mercury thermometer", price: 4400, category: "Measuring Instruments", image: "assets/img/Nproduct/b353.jpg" },
+  { item: "Metalic Rods", price: 7500, category: "Laboratory Components", image: "assets/img/Nproduct/b354.jpg" },
+  { item: "Metallic Rods", price: 7500, category: "Laboratory Components", image: "assets/img/Nproduct/b355.jpg" },
+  { item: "Methanol", price: 17500, category: "Alcohols", image: "assets/img/Nproduct/b356.jpg" },
+  { item: "Methanol 99.5% Extrapure", price: 30000, category: "Alcohols", image: "assets/img/Nproduct/b357.jpg" },
+  { item: "Methyl-p-hydroxybenzoate 99% Ex", price: 95000, category: "Organic Chemicals", image: "assets/img/Nproduct/b358.jpg" },
+  { item: "Methyl Cellulose(highviscosity", price: 150000, category: "Polymers", image: "assets/img/Nproduct/b359.jpg" },
+  { item: "Methyl Orange 500mls", price: 15000, category: "Indicators", image: "assets/img/Nproduct/b360.jpg" },
+  { item: "Methyl Orange Powder", price: 13600, category: "Indicators", image: "assets/img/Nproduct/b361.jpg" },
+  { item: "Methyl Salicylate 99% For Synth", price: 110000, category: "Organic Chemicals", image: "assets/img/Nproduct/b362.jpg" },
+  { item: "Methylated Spirit", price: 54500, category: "Alcohols", image: "assets/img/Nproduct/b363.jpg" },
+  { item: "Methylene Blue Powder 25g", price: 77200, category: "Dyes/Stains", image: "assets/img/Nproduct/b364.jpg" },
+  { item: "Metre Bridge", price: 34000, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b365.jpg" },
+  { item: "Metre Ruller Mdf", price: 4000, category: "Measuring Instruments", image: "assets/img/Nproduct/b366.jpg" },
+  { item: "Metre Ruller Wooden", price: 6500, category: "Measuring Instruments", image: "assets/img/Nproduct/b367.jpg" },
+  { item: "Micro Pippete Blue P/500", price: 150000, category: "Pipettes", image: "assets/img/Nproduct/b368.jpg" },
+  { item: "Micro Pippete Yellow P/1000", price: 185000, category: "Pipettes", image: "assets/img/Nproduct/b369.jpg" },
+  { item: "Micrometer Screw Gauge", price: 13500, category: "Measuring Instruments", image: "assets/img/Nproduct/b370.jpg" },
+  { item: "Micrometer Sg Digital", price: 185000, category: "Measuring Instruments", image: "assets/img/Nproduct/b371.jpg" },
+  { item: "Microscope Slides Frosted", price: 20000, category: "Microscopy Supplies", image: "assets/img/Nproduct/b372.jpg" },
+  { item: "Model Ear", price: 20000, category: "Anatomical Models", image: "assets/img/Nproduct/b373.jpg" },
+  { item: "Model Extration", price: 20000, category: "Anatomical Models", image: "assets/img/Nproduct/b374.jpg" },
+  { item: "Model Eye", price: 17000, category: "Anatomical Models", image: "assets/img/Nproduct/b375.jpg" },
+  { item: "Model Heart", price: 17000, category: "Anatomical Models", image: "assets/img/Nproduct/b376.jpg" },
+  { item: "Model Kidney", price: 20000, category: "Anatomical Models", image: "assets/img/Nproduct/b377.jpg" },
+  { item: "Model of human skeleton", price: 295000, category: "Anatomical Models", image: "assets/img/Nproduct/b378.jpg" },
+  { item: "Model Reproductive Female", price: 30000, category: "Anatomical Models", image: "assets/img/Nproduct/b379.jpg" },
+  { item: "Model Reproductive Male", price: 30000, category: "Anatomical Models", image: "assets/img/Nproduct/b380.jpg" },
+  { item: "Model Respiratory", price: 30000, category: "Anatomical Models", image: "assets/img/Nproduct/b381.jpg" },
+  { item: "Model Skin", price: 30000, category: "Anatomical Models", image: "assets/img/Nproduct/b382.jpg" },
+  { item: "Mortal&Pestle 3\"", price: 15000, category: "Laboratory Porcelainware", image: "assets/img/Nproduct/b383.jpg" },
+  { item: "Mortar And Pestle 4\"", price: 5200, category: "Laboratory Porcelainware", image: "assets/img/Nproduct/b384.jpg" },
+  { item: "Mounting Needles", price: 2500, category: "Microscopy Supplies", image: "assets/img/Nproduct/b385.jpg" },
+  { item: "MRDT", price: 54800, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b386.jpg" },
+  { item: "Multifunctional Office Paper", price: 73800, category: "Office Supplies", image: "assets/img/Nproduct/b387.jpg" },
+  { item: "Multistyick", price: 43600, category: "Medical Consumables", image: "assets/img/Nproduct/b388.jpg" },
+  { item: "IN Hexane 2.5", price: 170000, category: "Solvents", image: "assets/img/Nproduct/b389.jpg" },
+  { item: "Neutral Red Powder 25g", price: 77200, category: "Dyes/Stains", image: "assets/img/Nproduct/b390.jpg" },
+  { item: "NGT 10", price: 4500, category: "Medical Consumables", image: "assets/img/Nproduct/b391.jpg" },
+  { item: "NGT G18", price: 4500, category: "Medical Consumables", image: "assets/img/Nproduct/b392.jpg" },
+  { item: "Nichrome Wire 24swg", price: 7500, category: "Electrical Components", image: "assets/img/Nproduct/b393.jpg" },
+  { item: "Nichrome Wire 26SWG", price: 9000, category: "Electrical Components", image: "assets/img/Nproduct/b394.jpg" },
+  { item: "Nichrome Wire 28SWG", price: 9000, category: "Electrical Components", image: "assets/img/Nproduct/b395.jpg" },
+  { item: "Nichrome Wire 30SWG", price: 9000, category: "Electrical Components", image: "assets/img/Nproduct/b396.jpg" },
+  { item: "Nipple G.S 3/4\"", price: 3700, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b397.jpg" },
+  { item: "Nitric Acid 69% Extrapure", price: 65000, category: "Acids", image: "assets/img/Nproduct/b398.jpg" },
+  { item: "Non-Trap 1 1/2\"", price: 12500, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b399.jpg" },
+  { item: "o-Cresol 98% For Synthesis", price: 355000, category: "Organic Chemicals", image: "assets/img/Nproduct/b400.jpg" },
+  { item: "Oil Immersion type A 10-15ml", price: 30400, category: "Microscopy Supplies", image: "assets/img/Nproduct/b401.jpg" },
+  { item: "Oleic Acid Extrapure", price: 122000, category: "Fatty Acids", image: "assets/img/Nproduct/b402.jpg" },
+  { item: "Optical Pin 1", price: 5000, category: "Optical Equipment", image: "assets/img/Nproduct/b403.jpg" },
+  { item: "Oxalic Acid", price: 18850, category: "Acids", image: "assets/img/Nproduct/b404.jpg" },
+  { item: "P-Trap 4\"", price: 5250, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b405.jpg" },
+  { item: "Pair of Cork Pads", price: 4000, category: "Laboratory Consumables", image: "assets/img/Nproduct/b406.jpg" },
+  { item: "Pair Of Scissors", price: 15000, category: "Laboratory Tools", image: "assets/img/Nproduct/b407.jpg" },
+  { item: "Paracetamol blister 10x10s", price: 11000, category: "Pharmaceuticals", image: "assets/img/Nproduct/b408.jpg" },
+  { item: "Paraffin Liquid Colouries,Heav", price: 35000, category: "Hydrocarbons", image: "assets/img/Nproduct/b409.jpg" },
+  { item: "Paraffin Wax Pellets 58-60°C", price: 15000, category: "Waxes & Emulsifiers", image: "assets/img/Nproduct/b410.jpg" },
+  { item: "Paraller bar", price: 546000, category: "Laboratory Equipment", image: "assets/img/Nproduct/b411.jpg" },
+  { item: "Patella Hammer Tiangulla", price: 43500, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b412.jpg" },
+  { item: "Pathology mounting slide p/50", price: 20000, category: "Microscopy Supplies", image: "assets/img/Nproduct/b413.jpg" },
+  { item: "Pauster Pippete Glass", price: 245000, category: "Pipettes", image: "assets/img/Nproduct/b414.jpg" },
+  { item: "Pauster Pippete Plastic P/250", price: 100000, category: "Pipettes", image: "assets/img/Nproduct/b415.jpg" },
+  { item: "PC Klean pH (2-5% Solution)", price: 81000, category: "Cleaning Supplies", image: "assets/img/Nproduct/b416.jpg" },
+  { item: "Pen Torch", price: 15000, category: "Laboratory Tools", image: "assets/img/Nproduct/b417.jpg" },
+  { item: "Pendulum Bob", price: 2900, category: "Laboratory Components", image: "assets/img/Nproduct/b418.jpg" },
+  { item: "Perchloroethylene 99% Extrapur", price: 75000, category: "Solvents", image: "assets/img/Nproduct/b419.jpg" },
+  { item: "Petri Dish Glass", price: 5000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b420.jpg" },
+  { item: "Petri Dish plastic", price: 2500, category: "Plasticware", image: "assets/img/Nproduct/b421.jpg" },
+  { item: "Petroleum Ether 2.5", price: 170000, category: "Solvents", image: "assets/img/Nproduct/b422.jpg" },
+  { item: "Ph Meter", price: 2550000, category: "Measuring Instruments", image: "assets/img/Nproduct/b423.jpg" },
+  { item: "Phenobarbitone Injection", price: 35000, category: "Pharmaceuticals", image: "assets/img/Nproduct/b424.jpg" },
+  { item: "Phenol 90% w/w Solution in Wate", price: 92000, category: "Organic Chemicals", image: "assets/img/Nproduct/b425.jpg" },
+  { item: "Phenol Crystals 99% Extrapure", price: 112000, category: "Organic Chemicals", image: "assets/img/Nproduct/b426.jpg" },
+  { item: "Phenolphthalein Indicator 0.5L", price: 15000, category: "Indicators", image: "assets/img/Nproduct/b427.jpg" },
+  { item: "Phenolphthalein Powder", price: 15000, category: "Indicators", image: "assets/img/Nproduct/b428.jpg" },
+  { item: "Phenyl Mercuric Nitrate 99% For", price: 395000, category: "Organic Chemicals", image: "assets/img/Nproduct/b429.jpg" },
+  { item: "Pippete Filler 3 Ways", price: 8500, category: "Pipette Accessories", image: "assets/img/Nproduct/b430.jpg" },
+  { item: "Pippete 10mls", price: 59500, category: "Pipettes", image: "assets/img/Nproduct/b431.jpg" },
+  { item: "Pippete 20mls", price: 4400, category: "Pipettes", image: "assets/img/Nproduct/b432.jpg" },
+  { item: "Pippete 25mls", price: 5150, category: "Pipettes", image: "assets/img/Nproduct/b433.jpg" },
+  { item: "Pippete 5mls", price: 4000, category: "Pipettes", image: "assets/img/Nproduct/b434.jpg" },
+  { item: "Plain Mirror", price: 2500, category: "Optical Equipment", image: "assets/img/Nproduct/b435.jpg" },
+  { item: "Plain Mirror with stand", price: 0, category: "Optical Equipment", image: "assets/img/Nproduct/b436.jpg" },
+  { item: "Plain vacutainer tubes 1*100", price: 47000, category: "Medical Consumables", image: "assets/img/Nproduct/b437.jpg" },
+  { item: "Plastic And Ground Glass Stoppe", price: 15000, category: "Laboratory Consumables", image: "assets/img/Nproduct/b438.jpg" },
+  { item: "Plastic test tube 5-7ml", price: 83500, category: "Plasticware", image: "assets/img/Nproduct/b439.jpg" },
+  { item: "Plasticinee", price: 15000, category: "Laboratory Consumables", image: "assets/img/Nproduct/b440.jpg" },
+  { item: "Plug KeySingle", price: 5500, category: "Electrical Components", image: "assets/img/Nproduct/b441.jpg" },
+  { item: "Poly male 3/4\"", price: 4900, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b442.jpg" },
+  { item: "Poly pipe 3/4\"", price: 2450, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b443.jpg" },
+  { item: "Poly Tee 3/4\"Class B", price: 5900, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b444.jpg" },
+  { item: "Polycarbonate Mice Food Cage", price: 275000, category: "Animal Cages", image: "assets/img/Nproduct/b445.jpg" },
+  { item: "Polycarbonate Rat Food Cage", price: 365000, category: "Animal Cages", image: "assets/img/Nproduct/b446.jpg" },
+  { item: "Polyvinyl Pyrrolldone K30 For S", price: 97000, category: "Polymers", image: "assets/img/Nproduct/b447.jpg" },
+  { item: "Potassium Carbonate", price: 20000, category: "Inorganic Salts", image: "assets/img/Nproduct/b448.jpg" },
+  { item: "Potassium Chlorate", price: 55000, category: "Inorganic Salts", image: "assets/img/Nproduct/b449.jpg" },
+  { item: "Potassium Chromate", price: 43500, category: "Inorganic Salts", image: "assets/img/Nproduct/b450.jpg" },
+  { item: "Potassium Dichromate", price: 45950, category: "Inorganic Salts", image: "assets/img/Nproduct/b451.jpg" },
+  { item: "Potassium Ferocynide", price: 45950, category: "Inorganic Salts", image: "assets/img/Nproduct/b452.jpg" },
+  { item: "Potassium Ferricyanide", price: 49500, category: "Inorganic Salts", image: "assets/img/Nproduct/b453.jpg" },
+  { item: "Potassium Hydroxide Pellets 85%", price: 19950, category: "Bases", image: "assets/img/Nproduct/b454.jpg" },
+  { item: "Potassium Iodide 100gm", price: 65000, category: "Inorganic Salts", image: "assets/img/Nproduct/b455.jpg" },
+  { item: "Potassium Iodide 500gms", price: 185000, category: "Inorganic Salts", image: "assets/img/Nproduct/b456.jpg" },
+  { item: "Potassium Permanganate", price: 35560, category: "Oxidizers", image: "assets/img/Nproduct/b457.jpg" },
+  { item: "Potentiometer", price: 34000, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b458.jpg" },
+  { item: "Pp Sink", price: 54500, category: "Laboratory Sinks", image: "assets/img/Nproduct/b459.jpg" },
+  { item: "Proflavin Hemisulphate Dihydrat", price: 15000, category: "Pharmaceutical Raw Materials", image: "assets/img/Nproduct/b460.jpg" },
+  { item: "Propyl-P-Hydroxy Benzoate99.5%", price: 10000, category: "Organic Chemicals", image: "assets/img/Nproduct/b461.jpg" },
+  { item: "Propylene Glycol 99% Extrapure", price: 44500, category: "Alcohols", image: "assets/img/Nproduct/b462.jpg" },
+  { item: "PulleySingle Wheel", price: 10500, category: "Laboratory Components", image: "assets/img/Nproduct/b463.jpg" },
+  { item: "Pvc elbow 1 1/2\"", price: 4000, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b464.jpg" },
+  { item: "Pvc Elbow 1 1/4\"Class B", price: 3800, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b465.jpg" },
+  { item: "Pvc pipe 1 1/2'", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b466.jpg" },
+  { item: "Pvc Pipe 1 1/4\"", price: 19900, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b467.jpg" },
+  { item: "Pvc Pipe 1 1/4\" Class B", price: 45500, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b468.jpg" },
+  { item: "Pvc Plug 1 1/4\"Class B", price: 2850, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b469.jpg" },
+  { item: "Pvc Tee 1 1/4\"Class B", price: 3900, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b470.jpg" },
+  { item: "Quickfi Adapter StopcockShape", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b471.jpg" },
+  { item: "Quickfit Adapter Expansion Cone", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b472.jpg" },
+  { item: "Quickfit Adapter Receiver,Vacuu", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b473.jpg" },
+  { item: "Quickfit Adapter Splash", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b474.jpg" },
+  { item: "Quickfit Adapter Stopcock shape", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b475.jpg" },
+  { item: "Quickfit Adapters Reduction Con", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b476.jpg" },
+  { item: "Reagent Bottle 125Ml(Amber)", price: 6500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b477.jpg" },
+  { item: "Reagent Bottle 250ml(Amber)", price: 7000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b478.jpg" },
+  { item: "Reagent Bottle 30ml(Amber)", price: 4000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b479.jpg" },
+  { item: "Reagent Bottle 500ml(Amber)", price: 8500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b480.jpg" },
+  { item: "Reagent Bottle 60ml(Amber)", price: 2900, category: "Laboratory Glassware", image: "assets/img/Nproduct/b481.jpg" },
+  { item: "Reagent Bottle Brown", price: 6500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b482.jpg" },
+  { item: "Reagent Bottle Clear", price: 6500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b483.jpg" },
+  { item: "Reagent Bottle Clear 1000mls", price: 35000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b484.jpg" },
+  { item: "Reagent Bottle Clear 125mls", price: 5000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b485.jpg" },
+  { item: "Reagent Bottle Clear 250mls", price: 7500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b486.jpg" },
+  { item: "Reagent Bottle125mls Amber", price: 4000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b487.jpg" },
+  { item: "Real Time PCR System,PRC-Q96", price: 34450, category: "Medical Equipment", image: "assets/img/Nproduct/b488.jpg" },
+  { item: "Reduce 1/2\" to 5/16\"", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b489.jpg" },
+  { item: "Regulator", price: 75000, category: "Gas Handling Equipment", image: "assets/img/Nproduct/b490.jpg" },
+  { item: "Reostant 0-200 Ohms", price: 18000, category: "Electrical Components", image: "assets/img/Nproduct/b491.jpg" },
+  { item: "Resistace Box 0-50", price: 44500, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b492.jpg" },
+  { item: "Resistance Box 0-10 Ohms", price: 37000, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b493.jpg" },
+  { item: "Resistance Box 0-100", price: 43500, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b494.jpg" },
+  { item: "Resorcinol 99% Extrapure", price: 72000, category: "Organic Chemicals", image: "assets/img/Nproduct/b495.jpg" },
+  { item: "Retort Base", price: 11000, category: "Laboratory Stands & Supports", image: "assets/img/Nproduct/b496.jpg" },
+  { item: "Retort Clamp", price: 7500, category: "Laboratory Clamps & Holders", image: "assets/img/Nproduct/b497.jpg" },
+  { item: "Retort Rod", price: 11000, category: "Laboratory Stands & Supports", image: "assets/img/Nproduct/b498.jpg" },
+  { item: "Rheumatoid Factor", price: 54800, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b499.jpg" },
+  { item: "Rosemary Oil Extrapure", price: 150000, category: "Essential Oils", image: "assets/img/Nproduct/b500.jpg" },
+  { item: "RPR Reagent", price: 44600, category: "Reagents", image: "assets/img/Nproduct/b501.jpg" },
+  { item: "Rubber Tubing Per Metre", price: 47750, category: "Laboratory Tubing", image: "assets/img/Nproduct/b502.jpg" },
+  { item: "Sabouraud Dextrose Broth", price: 29500, category: "Culture Media", image: "assets/img/Nproduct/b503.jpg" },
+  { item: "Safety Google", price: 10500, category: "Safety Apparel", image: "assets/img/Nproduct/b504.jpg" },
+  { item: "Salicylic Acid 99% Extrapure", price: 44500, category: "Organic Chemicals", image: "assets/img/Nproduct/b505.jpg" },
+  { item: "Sanitary Vending Machine (AUTOMATIC SANITARY VENDING MACHINE(40 NAPKIN CAP", price: 0, category: "Medical Equipment", image: "assets/img/Nproduct/b506.jpg" },
+  { item: "Sanitary Vending Machine( 20-25", price: 0, category: "Medical Equipment", image: "assets/img/Nproduct/b507.jpg" },
+  { item: "Scapel", price: 20000, category: "Medical Surgical Instruments", image: "assets/img/Nproduct/b508.jpg" },
+  { item: "Schott Duran Bottle", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b509.jpg" },
+  { item: "Schott Duran Bottle 250", price: 4500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b510.jpg" },
+  { item: "Schott Duran Bottle 500mls", price: 54500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b511.jpg" },
+  { item: "Scouper", price: 4000, category: "Laboratory Tools", image: "assets/img/Nproduct/b512.jpg" },
+  { item: "Semi Circular Block", price: 6500, category: "Optical Equipment", image: "assets/img/Nproduct/b513.jpg" },
+  { item: "SeparatingFunnel 1000mls", price: 105000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b514.jpg" },
+  { item: "SeparatingFunnel 250mls", price: 15000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b515.jpg" },
+  { item: "SeparatingFunnel 500mls", price: 36000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b516.jpg" },
+  { item: "Sephadex 50gm", price: 1880000, category: "Chromatography Media", image: "assets/img/Nproduct/b517.jpg" },
+  { item: "Shoulder wheel", price: 135000, category: "Rehabilitation Equipment", image: "assets/img/Nproduct/b518.jpg" },
+  { item: "Sieve", price: 44500, category: "Laboratory Tools", image: "assets/img/Nproduct/b519.jpg" },
+  { item: "Silica crucible", price: 5461, category: "Laboratory Porcelainware", image: "assets/img/Nproduct/b520.jpg" },
+  { item: "Silica Gel", price: 44500, category: "Desiccants", image: "assets/img/Nproduct/b521.jpg" },
+  { item: "Silica Gel 25kg", price: 313000, category: "Desiccants", image: "assets/img/Nproduct/b522.jpg" },
+  { item: "Silver Nitrate", price: 44500, category: "Inorganic Salts", image: "assets/img/Nproduct/b523.jpg" },
+  { item: "Silver Nitrate Ar", price: 295000, category: "Inorganic Salts", image: "assets/img/Nproduct/b524.jpg" },
+  { item: "Skeleton", price: 97000, category: "Anatomical Models", image: "assets/img/Nproduct/b525.jpg" },
+  { item: "Slotted Mass 100gX5 Imported", price: 17000, category: "Measuring Instruments", image: "assets/img/Nproduct/b526.jpg" },
+  { item: "Slotted Mass 20gX10 Imported", price: 16400, category: "Measuring Instruments", image: "assets/img/Nproduct/b527.jpg" },
+  { item: "Slotted Mass 50gX10 Imported", price: 17000, category: "Measuring Instruments", image: "assets/img/Nproduct/b528.jpg" },
+  { item: "Slotted Mass10gX10 Imported", price: 16500, category: "Measuring Instruments", image: "assets/img/Nproduct/b529.jpg" },
+  { item: "Small Animal Cage", price: 375000, category: "Animal Cages", image: "assets/img/Nproduct/b530.jpg" },
+  { item: "Sodium Acetate", price: 18850, category: "Inorganic Salts", image: "assets/img/Nproduct/b531.jpg" },
+  { item: "Sodium Bicarbonate", price: 12520, category: "Inorganic Salts", image: "assets/img/Nproduct/b532.jpg" },
+  { item: "Sodium Carbonate Anhydrous", price: 13800, category: "Inorganic Salts", image: "assets/img/Nproduct/b533.jpg" },
+  { item: "Sodium Carbonate Deca", price: 36560, category: "Inorganic Salts", image: "assets/img/Nproduct/b534.jpg" },
+  { item: "Sodium Chloride 99.5% Extrapure", price: 11000, category: "Inorganic Salts", image: "assets/img/Nproduct/b535.jpg" },
+  { item: "sodium citrate dihydrate", price: 0, category: "Inorganic Salts", image: "assets/img/Nproduct/b536.jpg" },
+  { item: "Sodium Hydroxide", price: 16715, category: "Bases", image: "assets/img/Nproduct/b537.jpg" },
+  { item: "Sodium hypochlorite solution", price: 22500, category: "Disinfectants", image: "assets/img/Nproduct/b538.jpg" },
+  { item: "Sodium Lauryl Sulphate Powder 8", price: 44500, category: "Surfactants", image: "assets/img/Nproduct/b539.jpg" },
+  { item: "Sodium Metabisulphite 96.5%", price: 36000, category: "Inorganic Salts", image: "assets/img/Nproduct/b540.jpg" },
+  { item: "Sodium Metal", price: 17500, category: "Metals", image: "assets/img/Nproduct/b541.jpg" },
+  { item: "Sodium Oxalate", price: 23400, category: "Inorganic Salts", image: "assets/img/Nproduct/b542.jpg" },
+  { item: "Sodium PhosphateDibasic Anhydr", price: 50500, category: "Inorganic Salts", image: "assets/img/Nproduct/b543.jpg" },
+  { item: "Sodium Sulphate Anhydrous 99% E", price: 18500, category: "Inorganic Salts", image: "assets/img/Nproduct/b544.jpg" },
+  { item: "Sodium Thiosulphate penta", price: 15650, category: "Inorganic Salts", image: "assets/img/Nproduct/b545.jpg" },
+  { item: "Sodium Thiosulphate Anhydrous", price: 15650, category: "Inorganic Salts", image: "assets/img/Nproduct/b546.jpg" },
+  { item: "SodiumPhosphateDibasicAnhy 99%", price: 59500, category: "Inorganic Salts", image: "assets/img/Nproduct/b547.jpg" },
+  { item: "Softy Body", price: 10500, category: "Medical Consumables", image: "assets/img/Nproduct/b548.jpg" },
+  { item: "Spatula", price: 1600, category: "Laboratory Tools", image: "assets/img/Nproduct/b549.jpg" },
+  { item: "Specimen Bottle", price: 31000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b550.jpg" },
+  { item: "Spiral Spring", price: 2500, category: "Laboratory Components", image: "assets/img/Nproduct/b551.jpg" },
+  { item: "Spirit Lamp Glass", price: 6500, category: "Heating Equipment", image: "assets/img/Nproduct/b552.jpg" },
+  { item: "Spotling Tiles", price: 4400, category: "Laboratory Porcelainware", image: "assets/img/Nproduct/b553.jpg" },
+  { item: "Spray Bottle", price: 31000, category: "Laboratory Plasticware", image: "assets/img/Nproduct/b554.jpg" },
+  { item: "Spring Balance", price: 5500, category: "Measuring Instruments", image: "assets/img/Nproduct/b555.jpg" },
+  { item: "Standard Mass 50g Imported", price: 4400, category: "Measuring Instruments", image: "assets/img/Nproduct/b556.jpg" },
+  { item: "Standard Mass 100g Imported", price: 4800, category: "Measuring Instruments", image: "assets/img/Nproduct/b557.jpg" },
+  { item: "Standard Mass 10g Imported", price: 2700, category: "Measuring Instruments", image: "assets/img/Nproduct/b558.jpg" },
+  { item: "Standard Mass 200g Imported", price: 10000, category: "Measuring Instruments", image: "assets/img/Nproduct/b559.jpg" },
+  { item: "Standard Mass 20g Imported", price: 4000, category: "Measuring Instruments", image: "assets/img/Nproduct/b560.jpg" },
+  { item: "Standard Resistor 1 Ohm", price: 2700, category: "Electrical Components", image: "assets/img/Nproduct/b561.jpg" },
+  { item: "Standard Resistor 10ohms", price: 3300, category: "Electrical Components", image: "assets/img/Nproduct/b562.jpg" },
+  { item: "Standard Resistor 2 Ohms", price: 2700, category: "Electrical Components", image: "assets/img/Nproduct/b563.jpg" },
+  { item: "Standard Resistor 3 Ohms", price: 2700, category: "Electrical Components", image: "assets/img/Nproduct/b564.jpg" },
+  { item: "Standard Resistor 4 Ohms", price: 2700, category: "Electrical Components", image: "assets/img/Nproduct/b565.jpg" },
+  { item: "Standard Resistor 5 Ohms", price: 2700, category: "Electrical Components", image: "assets/img/Nproduct/b566.jpg" },
+  { item: "Standard Resistor 6 Ohms", price: 2800, category: "Electrical Components", image: "assets/img/Nproduct/b567.jpg" },
+  { item: "Starch", price: 32500, category: "Raw Materials", image: "assets/img/Nproduct/b568.jpg" },
+  { item: "Starch Maize (Corn) Extra Pure", price: 21500, category: "Raw Materials", image: "assets/img/Nproduct/b569.jpg" },
+  { item: "Stationary bicycle", price: 72300, category: "Rehabilitation Equipment", image: "assets/img/Nproduct/b570.jpg" },
+  { item: "Sterile Gloves", price: 2500, category: "Medical Consumables", image: "assets/img/Nproduct/b571.jpg" },
+  { item: "Stethoscope", price: 30000, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b572.jpg" },
+  { item: "Stirring Rod", price: 1500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b573.jpg" },
+  { item: "Stop Watch Digital", price: 6500, category: "Measuring Instruments", image: "assets/img/Nproduct/b574.jpg" },
+  { item: "Stop Watch Electronic Proffesio", price: 10000, category: "Measuring Instruments", image: "assets/img/Nproduct/b575.jpg" },
+  { item: "Stop Watch Zsd-009 With Compas", price: 7165, category: "Measuring Instruments", image: "assets/img/Nproduct/b576.jpg" },
+  { item: "Student Microscope", price: 195000, category: "Microscopes", image: "assets/img/Nproduct/b577.jpg" },
+  { item: "Succinic Acid /Butanedioic", price: 39000, category: "Organic Chemicals", image: "assets/img/Nproduct/b578.jpg" },
+  { item: "Sucrose Extrapure", price: 15650, category: "Sugars", image: "assets/img/Nproduct/b579.jpg" },
+  { item: "Sudan iii Powder", price: 15000, category: "Dyes/Stains", image: "assets/img/Nproduct/b580.jpg" },
+  { item: "Sudan iii Solution 500mls", price: 15000, category: "Dyes/Stains", image: "assets/img/Nproduct/b581.jpg" },
+  { item: "SulphurPowder", price: 17000, category: "Non-Metallic Elements", image: "assets/img/Nproduct/b582.jpg" },
+  { item: "Sulphuric Acid 98% Extrapure", price: 48500, category: "Acids", image: "assets/img/Nproduct/b583.jpg" },
+  { item: "Sulphuric acide", price: 97000, category: "Acids", image: "assets/img/Nproduct/b584.jpg" },
+  { item: "Sunction Catheter # 10", price: 4000, category: "Medical Consumables", image: "assets/img/Nproduct/b585.jpg" },
+  { item: "Sunction Catheter # 18", price: 4000, category: "Medical Consumables", image: "assets/img/Nproduct/b586.jpg" },
+  { item: "Superscript III First strand", price: 0, category: "Molecular Biology Reagents", image: "assets/img/Nproduct/b587.jpg" },
+  { item: "Superscript III one step RT_PCR", price: 0, category: "Molecular Biology Reagents", image: "assets/img/Nproduct/b588.jpg" },
+  { item: "Surgical Blades", price: 31000, category: "Medical Surgical Instruments", image: "assets/img/Nproduct/b589.jpg" },
+  { item: "Surgical Gloves", price: 20000, category: "Medical Consumables", image: "assets/img/Nproduct/b590.jpg" },
+  { item: "Swan neck water tap", price: 71000, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b591.jpg" },
+  { item: "Syringe 20cc", price: 2050, category: "Medical Consumables", image: "assets/img/Nproduct/b592.jpg" },
+  { item: "Syringe 50mls", price: 4000, category: "Medical Consumables", image: "assets/img/Nproduct/b593.jpg" },
+  { item: "Syringe 5mls P/100", price: 66000, category: "Medical Consumables", image: "assets/img/Nproduct/b594.jpg" },
+  { item: "Syringe Auto Filter P/100", price: 295000, category: "Medical Consumables", image: "assets/img/Nproduct/b595.jpg" },
+  { item: "Syringes 2cc", price: 16900, category: "Medical Consumables", image: "assets/img/Nproduct/b596.jpg" },
+  { item: "Syringes 5cc", price: 33200, category: "Medical Consumables", image: "assets/img/Nproduct/b597.jpg" },
+  { item: "Tannic Acid Powder Extrapure", price: 97500, category: "Organic Chemicals", image: "assets/img/Nproduct/b598.jpg" },
+  { item: "Tapping Key Double", price: 6500, category: "Electrical Components", image: "assets/img/Nproduct/b599.jpg" },
+  { item: "Tapping KeySingle", price: 5000, category: "Electrical Components", image: "assets/img/Nproduct/b600.jpg" },
+  { item: "Tartrazine AR For Microscopy", price: 59500, category: "Dyes/Stains", image: "assets/img/Nproduct/b601.jpg" },
+  { item: "Tee connector 3/4'", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b602.jpg" },
+  { item: "Tee G.S 3/4\"", price: 3700, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b603.jpg" },
+  { item: "Tee Joiint", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b604.jpg" },
+  { item: "TENS", price: 495000, category: "Medical Equipment", image: "assets/img/Nproduct/b605.jpg" },
+  { item: "Terpineol Anhydrous 80% Extra P", price: 115000, category: "Organic Chemicals", image: "assets/img/Nproduct/b606.jpg" },
+  { item: "Test Tube Rack Plastic", price: 4000, category: "Plasticware", image: "assets/img/Nproduct/b607.jpg" },
+  { item: "Test Tube Brush", price: 1500, category: "Laboratory Brushes", image: "assets/img/Nproduct/b608.jpg" },
+  { item: "Test Tube Holder", price: 2500, category: "Laboratory Clamps & Holders", image: "assets/img/Nproduct/b609.jpg" },
+  { item: "Test Tube Pyrex", price: 2000, category: "Pyrex Glassware", image: "assets/img/Nproduct/b610.jpg" },
+  { item: "Test Tube Rack 6 Holes", price: 4000, category: "Plasticware", image: "assets/img/Nproduct/b611.jpg" },
+  { item: "Test tube Soda Glass", price: 1500, category: "Glassware", image: "assets/img/Nproduct/b612.jpg" },
+  { item: "Therapeutic ultrasound machine", price: 3900000, category: "Medical Equipment", image: "assets/img/Nproduct/b613.jpg" },
+  { item: "Thermometer Alcohol", price: 4200, category: "Measuring Instruments", image: "assets/img/Nproduct/b614.jpg" },
+  { item: "Thermometer Clinical", price: 4500, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b615.jpg" },
+  { item: "Thistle funnel", price: 7500, category: "Laboratory Glassware", image: "assets/img/Nproduct/b616.jpg" },
+  { item: "Thread seal tap", price: 1480, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b617.jpg" },
+  { item: "Thread Seal Tape", price: 2618, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b618.jpg" },
+  { item: "Thread tape", price: 0, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b619.jpg" },
+  { item: "Thymol Crystal 99% Extrapure", price: 31000, category: "Organic Chemicals", image: "assets/img/Nproduct/b620.jpg" },
+  { item: "Tic Alluminium Plate Silica Gel", price: 778500, category: "Chromatography Supplies", image: "assets/img/Nproduct/b621.jpg" },
+  { item: "Tilting table", price: 3950000, category: "Medical Equipment", image: "assets/img/Nproduct/b622.jpg" },
+  { item: "Tissue", price: 3500, category: "Medical Consumables", image: "assets/img/Nproduct/b623.jpg" },
+  { item: "Tlv Uv Cabinet", price: 3750000, category: "Laboratory Equipment", image: "assets/img/Nproduct/b624.jpg" },
+  { item: "Toluene 2.5", price: 172000, category: "Solvents", image: "assets/img/Nproduct/b625.jpg" },
+  { item: "Torniquet", price: 12000, category: "Medical Surgical Instruments", image: "assets/img/Nproduct/b626.jpg" },
+  { item: "Traction bed", price: 1750000, category: "Hospital Furniture", image: "assets/img/Nproduct/b627.jpg" },
+  { item: "tri-Potassium Citrate Mono 99%", price: 49500, category: "Inorganic Salts", image: "assets/img/Nproduct/b628.jpg" },
+  { item: "tri-Sodium Orthophosphate Dodec", price: 44500, category: "Inorganic Salts", image: "assets/img/Nproduct/b629.jpg" },
+  { item: "Tri Sodium Citrate Local Pack", price: 31000, category: "Inorganic Salts", image: "assets/img/Nproduct/b630.jpg" },
+  { item: "Tripod Stand", price: 9500, category: "Laboratory Stands & Supports", image: "assets/img/Nproduct/b631.jpg" },
+  { item: "Trough", price: 21500, category: "Laboratory Plasticware", image: "assets/img/Nproduct/b632.jpg" },
+  { item: "Trough Glass", price: 20000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b633.jpg" },
+  { item: "Turpentine Oil Pure", price: 115000, category: "Essential Oils", image: "assets/img/Nproduct/b634.jpg" },
+  { item: "Tween® -20 Extrapure", price: 49500, category: "Surfactants", image: "assets/img/Nproduct/b635.jpg" },
+  { item: "Tween® -80 Extrapure", price: 107000, category: "Surfactants", image: "assets/img/Nproduct/b636.jpg" },
+  { item: "Typhoid IGM/IGG", price: 107000, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b637.jpg" },
+  { item: "U-Shape Magnet 3\"", price: 14500, category: "Magnets", image: "assets/img/Nproduct/b638.jpg" },
+  { item: "Universal Bottle 28mls", price: 8500, category: "Laboratory Plasticware", image: "assets/img/Nproduct/b639.jpg" },
+  { item: "Universalindicator", price: 36500, category: "Indicators", image: "assets/img/Nproduct/b640.jpg" },
+  { item: "Urea", price: 31000, category: "Organic Chemicals", image: "assets/img/Nproduct/b641.jpg" },
+  { item: "Vacutainer needles", price: 47500, category: "Medical Consumables", image: "assets/img/Nproduct/b642.jpg" },
+  { item: "Vaseline white", price: 36500, category: "Raw Materials", image: "assets/img/Nproduct/b643.jpg" },
+  { item: "Venier Caliper", price: 7500, category: "Measuring Instruments", image: "assets/img/Nproduct/b644.jpg" },
+  { item: "Venier Caliper Digital", price: 76000, category: "Measuring Instruments", image: "assets/img/Nproduct/b645.jpg" },
+  { item: "Voltimeter 0-2", price: 17500, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b646.jpg" },
+  { item: "Voltimeter 0-3", price: 17500, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b647.jpg" },
+  { item: "Voltimeter 0-5", price: 15000, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b648.jpg" },
+  { item: "Voltimeter Dual Range 0-3/5V", price: 0, category: "Electrical Measuring Instruments", image: "assets/img/Nproduct/b649.jpg" },
+  { item: "VolumetricFlask 100mls", price: 7500, category: "Glassware", image: "assets/img/Nproduct/b650.jpg" },
+  { item: "volumetric flask 2000mls", price: 36500, category: "Glassware", image: "assets/img/Nproduct/b651.jpg" },
+  { item: "VolumetricFlask 500mls", price: 16500, category: "Glassware", image: "assets/img/Nproduct/b652.jpg" },
+  { item: "WalingFrame", price: 118000, category: "Rehabilitation Equipment", image: "assets/img/Nproduct/b653.jpg" },
+  { item: "Wall Mirroor", price: 31000, category: "Optical Equipment", image: "assets/img/Nproduct/b654.jpg" },
+  { item: "Wall Mirror", price: 31000, category: "Optical Equipment", image: "assets/img/Nproduct/b655.jpg" },
+  { item: "Wash Bottle", price: 5000, category: "Laboratory Plasticware", image: "assets/img/Nproduct/b656.jpg" },
+  { item: "WASH BOTTLEE", price: 5800, category: "Laboratory Plasticware", image: "assets/img/Nproduct/b657.jpg" },
+  { item: "watch", price: 126000, category: "Medical Diagnostic Tools", image: "assets/img/Nproduct/b658.jpg" },
+  { item: "Watch Glass", price: 3000, category: "Laboratory Glassware", image: "assets/img/Nproduct/b659.jpg" },
+  { item: "Water bath", price: 20000, category: "Heating Equipment", image: "assets/img/Nproduct/b660.jpg" },
+  { item: "Water Tap Medium", price: 66000, category: "Plumbing & Fittings", image: "assets/img/Nproduct/b661.jpg" },
+  { item: "West 1.5", price: 11000, category: "Laboratory Components", image: "assets/img/Nproduct/b662.jpg" },
+  { item: "Wire Gauze", price: 2500, category: "Laboratory Stands & Supports", image: "assets/img/Nproduct/b663.jpg" },
+  { item: "Xylazine Injection", price: 36500, category: "Pharmaceuticals", image: "assets/img/Nproduct/b664.jpg" },
+  { item: "Yellow Pippete Tips", price: 20300, category: "Pipette Accessories", image: "assets/img/Nproduct/b665.jpg" },
+  { item: "Yellow Tips", price: 44500, category: "Pipette Accessories", image: "assets/img/Nproduct/b666.jpg" },
+  { item: "Zinc Carbonate Basic Extrapure", price: 21500, category: "Inorganic Salts", image: "assets/img/Nproduct/b667.jpg" },
+  { item: "Zinc Chloride", price: 31500, category: "Inorganic Salts", image: "assets/img/Nproduct/b668.jpg" },
+  { item: "Zinc Chloride Dry 97% Extrapure", price: 32700, category: "Inorganic Salts", image: "assets/img/Nproduct/b669.jpg" },
+  { item: "Zinc Metal", price: 0, category: "Metals", image: "assets/img/Nproduct/b670.jpg" },
+  { item: "Zinc Nitrate", price: 267010, category: "Inorganic Salts", image: "assets/img/Nproduct/b671.jpg" },
+  { item: "Zinc Oxide 99% Extrapure", price: 39500, category: "Oxides", image: "assets/img/Nproduct/b672.jpg" },
+  { item: "Zinc Stearate Extrapure", price: 54500, category: "Raw Materials", image: "assets/img/Nproduct/b673.jpg" },
+  { item: "Zinc Sulphate Heptahydrate 99%", price: 17850, category: "Inorganic Salts", image: "assets/img/Nproduct/b674.jpg" }
+];
+
+
+        const App = () => {
+            const [cart, setCart] = React.useState([]);
+            const [searchTerm, setSearchTerm] = React.useState('');
+            const [category, setCategory] = React.useState('All');
+            const [sortBy, setSortBy] = React.useState('name-asc');
+            const [showEmailModal, setShowEmailModal] = React.useState(false);
+            const [showCartModal, setShowCartModal] = React.useState(false);
+            const [formData, setFormData] = React.useState({
+                senderName: '',
+                senderContact: '',
+                senderOrg: '',
+                senderPlace: ''
+            });
+
+            const categories = ['All', ...new Set(itemsData.map(item => item.category))];
+
+            const filteredItems = itemsData
+                .filter(item => 
+                    item.item.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                    (category === 'All' || item.category === category)
+                )
+                .sort((a, b) => {
+                    if (sortBy === 'name-asc') return a.item.localeCompare(b.item);
+                    if (sortBy === 'name-desc') return b.item.localeCompare(a.item);
+                    if (sortBy === 'price-asc') return a.price - b.price;
+                    if (sortBy === 'price-desc') return b.price - a.price;
+                    return 0;
+                });
+
+            const addToCart = (item, quantity) => {
+                if (quantity > 0) {
+                    setCart([...cart, { ...item, quantity }]);
+                } else {
+                    alert('Please enter a valid quantity.');
+                }
+            };
+
+            const updateCartBar = () => {
+                return cart.reduce((sum, item) => sum + item.quantity, 0);
+            };
+
+            const handleShare = (item) => {
+                const shareText = `Check out ${item.item} from Gasdaniel Company! Price: ${item.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+                const shareUrl = window.location.href;
+                if (navigator.share) {
+                    navigator.share({
+                        title: item.item,
+                        text: shareText,
+                        url: shareUrl
+                    }).catch(console.error);
+                } else {
+                    const mailtoLink = `mailto:?subject=${encodeURIComponent(item.item)}&body=${encodeURIComponent(shareText + '\n' + shareUrl)}`;
+                    window.location.href = mailtoLink;
+                }
+            };
+
+            const handleFormChange = (e) => {
+                setFormData({ ...formData, [e.target.id]: e.target.value });
+            };
+
+            const handleSubmitOrder = () => {
+                const { senderName, senderContact, senderOrg, senderPlace } = formData;
+                if (!senderName || !senderContact || !senderOrg || !senderPlace) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+                const cartText = cart.map(item => `${item.item}: ${item.quantity} x ${item.price.toLocaleString('en-US', { minimumFractionDigits: 2 })} = ${(item.price * item.quantity).toLocaleString('en-US', { minimumFractionDigits: 2 })}`).join('\n');
+                const subject = 'Order from Gasdaniel Company Catalog';
+                const body = `Order Details:\n\nSender Name: ${senderName}\nSender Contact: ${senderContact}\nOrganization: ${senderOrg}\nPlace: ${senderPlace}\nDate: ${new Date().toLocaleDateString()}\n\nCart Contents:\n${cartText}\n\nTotal Items: ${cart.reduce((sum, item) => sum + item.quantity, 0)}\nTotal Price: ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+                const mailtoLink = `mailto:order.gasdanielcompany@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailtoLink;
+                setShowEmailModal(false);
+                setFormData({ senderName: '', senderContact: '', senderOrg: '', senderPlace: '' });
+            };
+
+            React.useEffect(() => {
+                const loading = document.getElementById('loading');
+                const root = document.getElementById('root');
+                setTimeout(() => {
+                    loading.classList.add('hidden');
+                    setTimeout(() => {
+                        loading.style.display = 'none';
+                        root.classList.remove('hidden');
+                        document.body.style.overflow = 'auto';
+                    }, 500);
+                }, 2000);
+            }, []);
+
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-200">
+                    {/* Navigation */}
+                    <nav className="bg-gradient-to-r from-blue-900 to-blue-700 text-yellow-400 p-4">
+                        <div className="container mx-auto flex justify-between items-center">
+                            <div className="flex items-center">
+                                <img src="assets/img/logo.png" alt="Gasdaniel Logo" className="h-10 mr-2" />
+                                <span className="text-xl font-bold">Gasdaniel Company</span>
+                            </div>
+                            <div className="space-x-4">
+                                <a href="index.html" className="hover:text-white">Home</a>
+                                <a href="products.html" className="hover:text-white">Products</a>
+                                <a href="about.html" className="hover:text-white">About Us</a>
+                                <a href="index.html#contact" className="hover:text-white">Contact</a>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Main Content */}
+                    <div className="container mx-auto p-6">
+                        <div className="flex items-center mb-6">
+                            <h1 className="text-3xl font-bold text-blue-900">Product Catalog</h1>
+                        </div>
+
+                        {/* Filters and Search */}
+                        <div className="flex flex-col md:flex-row justify-between mb-6 gap-4">
+                            <input
+                                type="text"
+                                placeholder="Search items..."
+                                className="p-3 rounded-full border-2 border-gray-300 focus:border-yellow-400 focus:outline-none w-full md:w-1/3"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            <select
+                                className="p-3 rounded-full border-2 border-gray-300 focus:border-yellow-400 focus:outline-none"
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                            >
+                                {categories.map(cat => (
+                                    <option key={cat} value={cat}>{cat}</option>
+                                ))}
+                            </select>
+                            <select
+                                className="p-3 rounded-full border-2 border-gray-300 focus:border-yellow-400 focus:outline-none"
+                                value={sortBy}
+                                onChange={(e) => setSortBy(e.target.value)}
+                            >
+                                <option value="name-asc">Name (A-Z)</option>
+                                <option value="name-desc">Name (Z-A)</option>
+                                <option value="price-asc">Price (Low to High)</option>
+                                <option value="price-desc">Price (High to Low)</option>
+                            </select>
+                        </div>
+
+                        {/* Product Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {filteredItems.map((item, index) => (
+                                <div key={index} className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition flex flex-row justify-between">
+                                    <div>
+                                    <img src={item.image} alt={item.item} className="w-36 h-36 object-cover rounded mb-4" />
+                                    <h3 className="text-lg font-semibold text-blue-900">{item.item}</h3>
+                                    <p className="text-gray-600">Category: {item.category}</p>
+                                    </div>
+                                    <div className="mt-2 flex flex-col">
+                                    
+                                    <p className="text-yellow-600 font-bold">{item.price.toLocaleString('en-US', { minimumFractionDigits: 2 })} TZS</p>
+                                    <div className="flex flex-col gap-10 items-start mt-2">
+                                    <div className="flex items-center mt-2">
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            defaultValue="1"
+                                            className="w-16 p-2 border rounded mr-2"
+                                            id={`quantity-${index}`}
+                                        />
+                                        <button
+                                            className="bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500"
+                                            onClick={() => addToCart(item, parseInt(document.getElementById(`quantity-${index}`).value))}
+                                        >
+                                            Add to Cart
+                                        </button>
+                                        </div>
+                                        <div>
+                                        <button
+                                            className="ml-2 text-blue-900 flex hover:text-blue-700"
+                                            onClick={() => handleShare(item)}
+                                        >
+                                            <i className="fas fa-share-alt"></i>
+                                        </button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Cart Bar */}
+                    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 rounded-full shadow-lg flex items-center gap-4">
+                        <p>Total Items: <span>{updateCartBar()}</span></p>
+                        <div className="flex gap-2">
+                            <button
+                                className="bg-yellow-400 text-blue-900 px-4 py-2 rounded-full hover:bg-yellow-500"
+                                onClick={() => cart.length > 0 ? setShowEmailModal(true) : alert('Cart is empty!')}
+                            >
+                                Send Order
+                            </button>
+                            <button
+                                className="bg-yellow-400 text-blue-900 px-4 py-2 rounded-full hover:bg-yellow-500"
+                                onClick={() => cart.length > 0 ? setShowCartModal(true) : alert('Cart is empty!')}
+                            >
+                                View Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Email Modal */}
+                    {showEmailModal && (
+                        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                            <div className="bg-white p-6 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto">
+                                <h2 className="text-2xl font-bold text-blue-900 mb-4">Send Order</h2>
+                                <p className="font-semibold mb-4">Please fill your details before sending your order</p>
+                                <label className="block mb-2 font-semibold">Name</label>
+                                <input
+                                    type="text"
+                                    id="senderName"
+                                    placeholder="Your Name"
+                                    className="w-full p-2 border rounded mb-4"
+                                    value={formData.senderName}
+                                    onChange={handleFormChange}
+                                    required
+                                />
+                                <label className="block mb-2 font-semibold">Contact (Phone)</label>
+                                <input
+                                    type="text"
+                                    id="senderContact"
+                                    placeholder="Your Phone Number"
+                                    className="w-full p-2 border rounded mb-4"
+                                    value={formData.senderContact}
+                                    onChange={handleFormChange}
+                                    required
+                                />
+                                <label className="block mb-2 font-semibold">Organization</label>
+                                <input
+                                    type="text"
+                                    id="senderOrg"
+                                    placeholder="Your Organization"
+                                    className="w-full p-2 border rounded mb-4"
+                                    value={formData.senderOrg}
+                                    onChange={handleFormChange}
+                                    required
+                                />
+                                <label className="block mb-2 font-semibold">Place (Region and District)</label>
+                                <input
+                                    type="text"
+                                    id="senderPlace"
+                                    placeholder="Your Location"
+                                    className="w-full p-2 border rounded mb-4"
+                                    value={formData.senderPlace}
+                                    onChange={handleFormChange}
+                                    required
+                                />
+                                <div className="flex justify-center gap-4">
+                                    <button
+                                        className="bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500"
+                                        onClick={handleSubmitOrder}
+                                    >
+                                        Send Now
+                                    </button>
+                                    <button
+                                        className="bg-gray-300 text-blue-900 px-4 py-2 rounded hover:bg-gray-400"
+                                        onClick={() => setShowEmailModal(false)}
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Cart Modal */}
+                    {showCartModal && (
+                        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                            <div className="bg-white p-6 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto">
+                                <h2 className="text-2xl font-bold text-blue-900 mb-4">My Cart</h2>
+                                <ul className="mb-4">
+                                    {cart.map((item, index) => (
+                                        <li key={index} className="border-b py-2">
+                                            {item.item}: {item.quantity} x {item.price.toLocaleString('en-US', { minimumFractionDigits: 2 })} = {(item.price * item.quantity).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="font-semibold">
+                                    Total Price: {cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                                </p>
+                                <div className="flex justify-center">
+                                    <button
+                                        className="bg-gray-300 text-blue-900 px-4 py-2 rounded hover:bg-gray-400"
+                                        onClick={() => setShowCartModal(false)}
+                                    >
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+
+    <!-- Font Awesome for Share Icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+      
+</body>
+</html>
